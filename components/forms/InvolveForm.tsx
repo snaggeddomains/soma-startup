@@ -42,7 +42,7 @@ export function InvolveForm({ defaultRole }: { defaultRole?: string }) {
             Choose a role
           </option>
           {involveTracks.map((t) => (
-            <option key={t.id} value={t.id}>
+            <option key={t.id} value={t.title}>
               {t.title}
             </option>
           ))}

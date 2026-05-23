@@ -66,7 +66,7 @@ export function RegisterForm() {
               Select a division
             </option>
             {divisions.map((d) => (
-              <option key={d.id} value={d.id}>
+              <option key={d.id} value={`${d.name} (${d.grades})`}>
                 {d.name} — {d.grades}
               </option>
             ))}
