@@ -128,20 +128,20 @@ export default function Home() {
       <section className="relative overflow-hidden bg-cream">
         <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
         <Sunburst className="left-1/2 top-[-30%] h-[60rem] w-[60rem] -translate-x-1/2" />
-        <Container className="relative py-20 sm:py-28">
+        <Container className="relative py-12 sm:py-28">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge className="mb-7" />
+            <Badge className="mb-5 sm:mb-7" />
             <h1 className="font-display text-balance text-5xl font-semibold leading-[1.04] tracking-tight sm:text-7xl">
               A town of makers.
               <br />
               <span className="text-accent">Now it&apos;s the kids&apos; turn.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft sm:mt-6">
               South Orange & Maplewood have always been full of artists, musicians,
               marketers, and builders. {event.name} is a one-day challenge that hands that
               creative spirit to the next generation — spot a problem, build it, pitch it.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
               <Button href="/register" className="px-6 py-3 text-base">
                 Register a student
               </Button>
@@ -152,7 +152,7 @@ export default function Home() {
           </div>
 
           {/* Prominent date / time / location */}
-          <div className="mx-auto mt-14 max-w-4xl">
+          <div className="mx-auto mt-10 max-w-4xl sm:mt-14">
             <div className="card-lift grid divide-y divide-line overflow-hidden rounded-xl2 border border-line bg-paper sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               {[
                 { Icon: Calendar, label: "When", value: event.dateLabel, sub: "One high-energy day" },
