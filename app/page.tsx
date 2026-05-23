@@ -322,8 +322,8 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Why it matters + Where it leads */}
-      <section id="feeder" className="scroll-mt-20 py-20 sm:py-24">
+      {/* Why it matters */}
+      <section className="py-20 sm:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <p className="kicker mb-3">Why it matters</p>
@@ -336,24 +336,29 @@ export default function Home() {
               can shape, not just consume.
             </p>
           </div>
+        </Container>
+      </section>
 
+      {/* Where it leads */}
+      <section id="feeder" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
+        <Container>
           {(() => {
             const featured = competitions.find((c) => c.local);
             const others = competitions.filter((c) => !c.local);
             return (
-              <div className="mx-auto mt-16 max-w-4xl">
+              <div className="mx-auto max-w-4xl">
                 <div className="mx-auto max-w-2xl text-center">
                   <p className="kicker mb-3">Where it leads</p>
-                  <h3 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                  <h2 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-[2.75rem]">
                     An on-ramp to bigger stages.
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-ink-soft">
+                  </h2>
+                  <p className="mt-4 text-lg leading-relaxed text-ink-soft">
                     We don&apos;t compete with the major student competitions — we get kids ready for
                     them, starting in our own backyard.
                   </p>
                 </div>
 
-                <div className="mt-8 space-y-4">
+                <div className="mt-10 space-y-4">
                   {featured && (
                     <a
                       href={featured.href}
@@ -409,7 +414,7 @@ export default function Home() {
       </section>
 
       {/* Get involved */}
-      <section className="border-y border-line bg-cream py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container>
           <SectionHeading
             kicker="Get involved"
@@ -434,7 +439,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 sm:py-24">
+      <section className="border-t border-line bg-cream py-20 sm:py-24">
         <Container className="max-w-3xl">
           <SectionHeading kicker="FAQ" title="Questions, answered." align="center" className="mb-12" />
           <Faq />
