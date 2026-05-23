@@ -1,18 +1,22 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { Stripes } from "@/components/Retro";
 import { event, nav } from "@/lib/content";
 
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-line bg-cream">
+      <Stripes className="rounded-none" />
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2 font-semibold tracking-tight">
-              <span className="grid h-7 w-7 place-items-center rounded-lg bg-ink text-paper text-sm">
+            <div className="flex items-center gap-2.5 tracking-tight">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-accent font-display text-[15px] font-semibold text-paper">
                 S
               </span>
-              SOMA<span className="-ml-1 text-accent">Startup</span>
+              <span className="font-display text-[17px] font-semibold">
+                SOMA <span className="text-accent">Startup</span>
+              </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
               {event.tagline} {event.dateLabel} · {event.location}.

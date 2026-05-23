@@ -58,26 +58,32 @@ export function InvolveForm({ defaultRole }: { defaultRole?: string }) {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <Label htmlFor="org" optional>
-            Company / organization
-          </Label>
-          <Input id="org" name="org" placeholder="Where you work" />
+          <Label htmlFor="org">Company / organization</Label>
+          <Input id="org" name="org" required placeholder="Where you work" />
         </div>
         <div>
-          <Label htmlFor="role-title" optional>
-            Your role
-          </Label>
-          <Input id="role-title" name="roleTitle" placeholder="Founder, designer, investor…" />
+          <Label htmlFor="role-title">Your role</Label>
+          <Input id="role-title" name="roleTitle" required placeholder="Founder, designer, investor…" />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="background" optional>
-          A little about your background
-        </Label>
+        <Label htmlFor="linkedin">LinkedIn URL</Label>
+        <Input
+          id="linkedin"
+          name="linkedin"
+          type="url"
+          required
+          placeholder="https://www.linkedin.com/in/your-profile"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="background">A little about your background</Label>
         <Textarea
           id="background"
           name="background"
+          required
           placeholder="What you'd bring, what excites you about SOMA Startup, or how you'd like to partner."
         />
       </div>

@@ -3,24 +3,24 @@
 
 export const event = {
   name: "SOMA Startup",
-  tagline: "A one-day startup challenge for South Orange & Maplewood students.",
+  tagline: "A town of makers — now it's the kids' turn.",
   // Aug 27, 2026 falls on a Thursday, matching the brief.
   dateLabel: "Thursday, August 27, 2026",
   dateISO: "2026-08-27",
   format: "All-day, single-day event",
   // TODO: confirm venue. Strong local candidates: SOPAC, Seton Hall, the public libraries.
-  location: "South Orange / Maplewood, NJ",
+  location: "South Orange + Maplewood, NJ",
   venueLabel: "Venue to be announced",
   // TODO: replace with a real address before launch.
-  contactEmail: "hello@somastartup.org",
+  contactEmail: "hello@somastartup.com",
   prizePerDivision: 1000,
   divisionsCount: 4,
 };
 
 export const nav = [
-  { label: "The Event", href: "/#about" },
+  { label: "The Day", href: "/#day" },
   { label: "Divisions", href: "/#divisions" },
-  { label: "Schedule", href: "/#schedule" },
+  { label: "Our Town", href: "/#town" },
   { label: "Prizes", href: "/#prizes" },
   { label: "Where It Leads", href: "/#feeder" },
   { label: "Resources", href: "/resources" },
@@ -34,12 +34,12 @@ export const stats = [
 ];
 
 export const objectives = [
-  "Introduce students to entrepreneurship and startup thinking early.",
-  "Build confidence in idea generation and public speaking.",
-  "Encourage creativity, initiative, and real-world problem solving.",
-  "Foster a healthy, active relationship with technology and innovation.",
-  "Show students that building is not reserved for adults.",
-  "Create a local pipeline of young builders headed for bigger stages.",
+  "Pass our town's creative, build-it-yourself spirit to the next generation.",
+  "Introduce students to entrepreneurship and what building looks like in 2026.",
+  "Build confidence in dreaming up ideas — and saying them out loud.",
+  "Reward creativity, initiative, and real-world problem solving.",
+  "Show kids that founders, makers, and artists can come from right here.",
+  "Grow a local pipeline of young builders headed for bigger stages.",
 ];
 
 export type Division = {
@@ -56,7 +56,7 @@ export const divisions: Division[] = [
     id: "young",
     name: "Young Builders",
     grades: "Up to 5th grade",
-    color: "amber",
+    color: "gold",
     focus:
       "Imagination first. Spot a problem, dream up a fix, and show it off with a drawing, model, or story.",
     judgedOn: "Creativity, clarity, and enthusiasm.",
@@ -65,7 +65,7 @@ export const divisions: Division[] = [
     id: "middle",
     name: "Middle School",
     grades: "Grades 6–8",
-    color: "emerald",
+    color: "sage",
     focus:
       "Turn an idea into a simple concept: who it helps, what it does, and what a first version looks like.",
     judgedOn: "Problem understanding, clarity, and effort.",
@@ -83,7 +83,7 @@ export const divisions: Division[] = [
     id: "college",
     name: "College",
     grades: "Undergraduate",
-    color: "violet",
+    color: "plum",
     focus:
       "Push toward venture thinking: differentiation, feasibility, and a clear path from idea to first users.",
     judgedOn: "Market understanding, differentiation, and realistic next steps.",
@@ -96,36 +96,29 @@ export type ScheduleBlock = {
   body: string;
 };
 
+// The focus of the day, in four parts. Doors at 9 AM, awards by 6 PM.
+export const eventHours = "9:00 AM – 6:00 PM";
+
 export const schedule: ScheduleBlock[] = [
   {
-    time: "Morning",
-    title: "Welcome & Kickoff",
-    body: "What a startup really is, how founders spot problems, and how a simple observation becomes a real opportunity — with student-friendly examples.",
+    time: "9:00 AM",
+    title: "What building looks like in 2026",
+    body: "We open by demystifying entrepreneurship for today: how founders spot problems, and what tools — including AI — put within reach of anyone with an idea.",
   },
   {
-    time: "Morning",
-    title: "Idea Generation & Team Formation",
-    body: "Arrive with an idea or find one on site. Work solo, bring a team, or form one in the room. Teams stay small and focused.",
+    time: "10:15 AM",
+    title: "Your competition, explained",
+    body: "Each division learns exactly what's expected — the format, the framework, and what a great pitch looks like for their age bracket.",
   },
   {
-    time: "Midday",
-    title: "Build Session",
-    body: "Work through a simple guided framework — no coding needed. Sketch, map a workflow, mock up a screen, or build a few slides.",
+    time: "11:00 AM",
+    title: "Team up and build with an advisor",
+    body: "Form small teams and work with a dedicated advisor through the day (lunch included) to shape your idea into a basic deck and a simple prototype.",
   },
   {
-    time: "Midday",
-    title: "Mentor Support",
-    body: "Founders, operators, designers, and engineers circulate to ask sharp questions, simplify your thinking, and strengthen your story.",
-  },
-  {
-    time: "Afternoon",
-    title: "Pitch Presentations",
-    body: "Each team presents to judges: the problem, the solution, who it's for, why it matters, and what makes it exciting.",
-  },
-  {
-    time: "Afternoon",
-    title: "Deliberation, Awards & Closing",
-    body: "Judges deliberate, winners are recognized in every division, and the day closes with real next-step momentum.",
+    time: "4:00 PM",
+    title: "The pitch competition",
+    body: "Teams pitch to the judges, who deliberate and name a winner and runner-up in every division. We wrap with awards by 6:00 PM.",
   },
 ];
 
@@ -155,9 +148,9 @@ export const olderCriteria = [
 ];
 
 export const prizes = [
-  "One winner per division — every age group is recognized.",
+  "A winner and a runner-up in every division.",
   "A $1,000 cash prize for each division winner.",
-  "Continued mentorship from founders, operators, investors, and builders.",
+  "Continued mentorship for winners from founders, operators, and builders.",
 ];
 
 export type Competition = {
@@ -208,30 +201,71 @@ export const competitions: Competition[] = [
   },
 ];
 
-export const localValue = [
+// Local heritage — warm, sourced facts about South Orange & Maplewood.
+export const heritage = {
+  lead: "South Orange and Maplewood have been a town of builders since the railroad arrived.",
+  body: "When the Morris & Essex line reached Maplewood in 1837, it turned quiet farmland into a community of people who make things — and that never stopped. A short ride from New York, the towns filled with artists, writers, musicians, and makers, earning the nickname \"Brooklyn West.\" SOMA Startup is our way of handing that creative, build-it-yourself spirit to the kids growing up here now.",
+  facts: [
+    { value: "1837", label: "the railroad reached Maplewood and the building began" },
+    { value: "1856", label: "Seton Hall University founded in South Orange" },
+    { value: "“Brooklyn West”", label: "the towns' name for their artsy, creative character" },
+    { value: "30 min", label: "to New York on the Midtown Direct line (since 1996)" },
+  ],
+};
+
+export type Local = {
+  name: string;
+  note: string;
+  town: string;
+};
+
+// Verified creatives connected to SOMA (all attended Columbia High School).
+export const notableLocals: Local[] = [
+  { name: "SZA", note: "Grammy-winning singer-songwriter", town: "Maplewood" },
+  { name: "Lauryn Hill", note: "Grammy-winning musician", town: "South Orange" },
+  { name: "Zach Braff", note: "Actor & filmmaker", town: "South Orange" },
+  { name: "Andre Braugher", note: "Acclaimed actor", town: "South Orange" },
+];
+
+export const creativeScene = [
   {
-    title: "SOMA's own entrepreneurship event",
-    body: "A visible, recurring moment that puts South Orange & Maplewood on the map for youth innovation.",
+    name: "SOPAC",
+    note: "The South Orange Performing Arts Center — the cultural heart of SOMA since 2006.",
   },
   {
-    title: "A bridge between schools and startup culture",
-    body: "Connecting Columbia High School and SOMSD students with founders, operators, and local businesses.",
+    name: "Maplewoodstock",
+    note: "A free music & arts festival in Memorial Park that's drawn the town together since 2004.",
+  },
+  {
+    name: "Midtown Direct Rep",
+    note: "A theater company founded by 32 local Broadway actors and techs who share the same train.",
+  },
+];
+
+export const localValue = [
+  {
+    title: "Built on a creative town",
+    body: "SOMA already overflows with artists, founders, and makers. This is how we pass that spirit down.",
+  },
+  {
+    title: "A bridge between schools and builders",
+    body: "Connecting Columbia High School and SOMSD students with the founders and creatives who live next door.",
   },
   {
     title: "Build, don't just consume",
-    body: "A constructive outlet that helps families turn screen time and AI curiosity into creation.",
+    body: "A constructive outlet that helps families turn screen time and AI curiosity into real creation.",
   },
   {
     title: "Spotting talent early",
     body: "Surfacing students with real initiative, creativity, and leadership — and encouraging them.",
   },
   {
-    title: "A natural higher-ed partner next door",
-    body: "Seton Hall University sits in South Orange, a ready bridge to college-level entrepreneurship.",
+    title: "A higher-ed partner next door",
+    body: "Seton Hall University has anchored South Orange since 1856 — a ready bridge to college-level entrepreneurship.",
   },
   {
     title: "An annual tradition in the making",
-    body: "Designed from day one to grow into a flagship local brand and a year-round pipeline.",
+    body: "Designed from day one to grow into a flagship local event and a year-round pipeline.",
   },
 ];
 
@@ -254,8 +288,8 @@ export type InvolveTrack = {
 export const involveTracks: InvolveTrack[] = [
   {
     id: "mentor",
-    title: "Mentor",
-    body: "Spend the day with teams, asking sharp questions and helping them sharpen their thinking.",
+    title: "Advisor / Mentor",
+    body: "Spend the day with a team, helping them shape a problem into a pitch, a deck, and a simple prototype.",
     bullets: [
       "Founders, operators, designers, marketers, engineers",
       "Light, encouraging guidance — never taking over",
@@ -298,7 +332,7 @@ export const resources = [
     body: "The same criteria judges use, so teams know exactly what they're being recognized for.",
   },
   {
-    title: "Event Schedule",
+    title: "Day Schedule",
     body: "The full run of the day, from kickoff energy to the closing awards.",
   },
   {
@@ -322,7 +356,7 @@ export const faqs = [
   },
   {
     q: "Do I need to know how to code or build apps?",
-    a: "Not at all. No coding or prior experience is required. You can sketch, map a workflow, mock up a screen, or make a few slides — whatever fits your idea.",
+    a: "Not at all. No coding or prior experience is required. With an advisor's help you'll build a simple deck and prototype — sketches, slides, and clear thinking all count.",
   },
   {
     q: "What does it cost?",
@@ -333,7 +367,7 @@ export const faqs = [
     a: "Each division has one winner who receives a $1,000 cash prize plus continued mentorship from founders, operators, and builders.",
   },
   {
-    q: "How can I help as a mentor, judge, or sponsor?",
+    q: "How can I help as an advisor, judge, or sponsor?",
     a: "We'd love that. Head to the Get Involved page and tell us how you'd like to contribute.",
   },
 ];

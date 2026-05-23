@@ -22,7 +22,7 @@ export function SectionHeading({
       )}
     >
       {kicker && <p className="kicker mb-3">{kicker}</p>}
-      <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h2 className="font-display text-balance text-4xl font-semibold tracking-tight sm:text-[2.75rem] sm:leading-[1.1]">
         {title}
       </h2>
       {intro && (
