@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// Shows a headshot if the file exists in /public, otherwise a colored monogram.
+// Large square portrait that fills the card width; monogram fallback if the
+// image is missing.
 export function JudgeAvatar({
   src,
   initials,
@@ -15,16 +16,14 @@ export function JudgeAvatar({
 }) {
   const [failed, setFailed] = useState(false);
   return (
-    <div
-      className={`relative grid h-28 w-28 place-items-center overflow-hidden rounded-full ${colorClass}`}
-    >
-      <span className="font-display text-3xl font-semibold text-paper">{initials}</span>
+    <div className={`relative grid aspect-square w-full place-items-center overflow-hidden ${colorClass}`}>
+      <span className="font-display text-6xl font-semibold text-paper">{initials}</span>
       {src && !failed && (
         <Image
           src={src}
           alt=""
           fill
-          sizes="112px"
+          sizes="(min-width: 1024px) 230px, (min-width: 640px) 33vw, 50vw"
           className="object-cover"
           onError={() => setFailed(true)}
         />

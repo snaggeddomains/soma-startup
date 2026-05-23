@@ -229,27 +229,29 @@ export default function Home() {
             intro="From Reddit and DoorDash to our own Columbia High School and Village Hall — a panel of local and world-class builders, weighing in with warmth."
             align="center"
           />
-          <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <ul className="mx-auto mt-12 grid max-w-6xl gap-5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
             {judges.map((j, i) => (
               <li key={j.name}>
                 <a
                   href={j.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card-lift group flex h-full flex-col items-center rounded-xl2 border border-line bg-paper p-6 text-center transition-colors hover:border-accent/40"
+                  className="card-lift group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-paper text-center transition-colors hover:border-accent/40"
                 >
                   <JudgeAvatar
                     src={j.image}
                     initials={initials(j.name)}
                     colorClass={avatarColors[i % avatarColors.length]}
                   />
-                  <h3 className="mt-4 font-display text-base font-semibold leading-snug">{j.name}</h3>
-                  <p className="mt-1 flex-1 text-sm leading-snug text-ink-soft">{j.title}</p>
-                  {j.local && (
-                    <span className="mt-3 rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-strong">
-                      SOMA local
-                    </span>
-                  )}
+                  <div className="flex flex-1 flex-col p-4">
+                    <h3 className="font-display text-base font-semibold leading-snug">{j.name}</h3>
+                    <p className="mt-1 flex-1 text-sm leading-snug text-ink-soft">{j.title}</p>
+                    {j.local && (
+                      <span className="mx-auto mt-3 w-fit rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-strong">
+                        SOMA local
+                      </span>
+                    )}
+                  </div>
                 </a>
               </li>
             ))}
