@@ -259,90 +259,85 @@ export default function Home() {
       </section>
 
       {/* Why it matters */}
-      <section className="border-t border-line py-20 sm:py-24">
+      <section id="why" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <p className="kicker mb-3">Why it matters</p>
             <h2 className="font-display text-balance text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl">
               The hardest part isn&apos;t ability. It&apos;s exposure.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+            <p className="mt-5 text-lg leading-relaxed text-ink-soft">
               Most kids have never been handed a framework for how an idea becomes something
-              real. We give them that early — so they grow up seeing startups as things they
-              can shape, not just consume.
+              real. We give them that early, so they grow up seeing startups as things they can
+              shape, not just consume, and get them ready for a lifetime of entrepreneurship.
+              We get kids ready for even larger startup competitions, too, starting in our own
+              backyard.
             </p>
           </div>
-        </Container>
-      </section>
 
-      {/* Where it leads */}
-      <section id="feeder" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
-        <Container>
           {(() => {
             const featured = competitions.find((c) => c.local);
             const others = competitions.filter((c) => !c.local);
             return (
-              <div className="mx-auto max-w-4xl">
-                <div className="mx-auto max-w-2xl text-center">
-                  <p className="kicker mb-3">Where it leads</p>
-                  <h2 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-[2.75rem]">
-                    An on-ramp to bigger stages.
-                  </h2>
-                  <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-                    We don&apos;t compete with the major student competitions — we get kids ready for
-                    them, starting in our own backyard.
-                  </p>
-                </div>
-
-                <div className="mt-10 space-y-4">
-                  {featured && (
-                    <a
-                      href={featured.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="card-lift group flex items-center gap-5 rounded-xl2 border border-accent/30 bg-accent-soft/60 p-6 transition-colors hover:border-accent/60"
-                    >
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-paper">
-                        <Pin />
-                      </span>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <h4 className="font-display text-lg font-semibold">{featured.name}</h4>
-                          <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
-                            Local
-                          </span>
-                        </div>
-                        <p className="mt-0.5 text-sm text-ink-soft">{featured.tag}</p>
+              <div className="mx-auto mt-12 max-w-3xl space-y-4">
+                {featured && (
+                  <a
+                    href={featured.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-lift group flex items-center gap-5 rounded-xl2 border border-accent/30 bg-accent-soft/60 p-6 transition-colors hover:border-accent/60"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-paper">
+                      <Pin />
+                    </span>
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="font-display text-lg font-semibold">{featured.name}</h3>
+                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
+                          Local
+                        </span>
                       </div>
-                      <span className="hidden text-2xl text-accent transition-transform group-hover:translate-x-0.5 sm:block" aria-hidden>
-                        →
-                      </span>
-                    </a>
-                  )}
+                      <p className="mt-0.5 text-sm text-ink-soft">{featured.tag}</p>
+                      {featured.when && (
+                        <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-strong">
+                          {featured.when}
+                        </p>
+                      )}
+                    </div>
+                    <span className="hidden text-2xl text-accent transition-transform group-hover:translate-x-0.5 sm:block" aria-hidden>
+                      →
+                    </span>
+                  </a>
+                )}
 
-                  <p className="pt-2 text-center text-sm text-ink-faint">
-                    …then national & global programs we prepare you for:
-                  </p>
+                <p className="pt-3 text-center text-sm text-ink-faint">
+                  …and the national & global stages beyond:
+                </p>
 
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    {others.map((c) => (
+                <ul className="divide-y divide-line overflow-hidden rounded-xl2 border border-line bg-paper">
+                  {others.map((c) => (
+                    <li key={c.name}>
                       <a
-                        key={c.name}
                         href={c.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col items-center rounded-xl2 border border-line bg-paper p-5 text-center transition-colors hover:border-accent/40"
+                        className="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-cream"
                       >
-                        <span className="grid h-10 w-10 place-items-center rounded-full bg-cream text-ink-soft transition-colors group-hover:text-accent">
+                        <span className="shrink-0 text-ink-faint transition-colors group-hover:text-accent">
                           <Globe />
                         </span>
-                        <h4 className="mt-3 font-display text-sm font-semibold leading-snug">{c.name}</h4>
-                        <p className="mt-1 flex-1 text-xs leading-snug text-ink-soft">{c.tag}</p>
-                        <p className="mt-2 text-[11px] text-ink-faint">{c.audience}</p>
+                        <div className="min-w-0 flex-1">
+                          <span className="font-display font-semibold">{c.name}</span>
+                          <span className="text-ink-soft"> — {c.tag}</span>
+                        </div>
+                        <span className="hidden shrink-0 text-xs text-ink-faint sm:block">{c.audience}</span>
+                        <span className="shrink-0 text-accent transition-transform group-hover:translate-x-0.5" aria-hidden>
+                          →
+                        </span>
                       </a>
-                    ))}
-                  </div>
-                </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             );
           })()}

@@ -20,7 +20,7 @@ export const nav = [
   { label: "Divisions", href: "/#divisions" },
   { label: "The Day", href: "/#day" },
   { label: "Judges", href: "/#judges" },
-  { label: "Where It Leads", href: "/#feeder" },
+  { label: "Why It Matters", href: "/#why" },
   { label: "Resources", href: "/resources" },
 ];
 
@@ -143,6 +143,7 @@ export type Competition = {
   tag: string;
   audience: string;
   href: string;
+  when?: string;
   local?: boolean;
 };
 
@@ -153,6 +154,7 @@ export const competitions: Competition[] = [
     tag: "$50K+ in prizes, here in South Orange",
     audience: "High school",
     href: "https://www.shu.edu/undergraduate-admissions/pirates-pitch-competition.html",
+    when: "Held every November",
     local: true,
   },
   {
