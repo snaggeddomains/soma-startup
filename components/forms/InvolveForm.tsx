@@ -3,17 +3,21 @@
 import { useState } from "react";
 import { Label, Input, Textarea, Select } from "@/components/forms/fields";
 import { involveTracks } from "@/lib/content";
+import { submitForm, honeypotProps } from "@/lib/submitForm";
 
-// SCAFFOLD: see RegisterForm — wire `data` to a real form service to go live.
 export function InvolveForm({ defaultRole }: { defaultRole?: string }) {
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    // TODO: send `data` to your backend / form service here.
-    console.log("Get involved (demo):", data);
-    setSubmitted(true);
+    setPending(true);
+    setError(null);
+    const result = await submitForm("involve", e.currentTarget);
+    setPending(false);
+    if (result.ok) setSubmitted(true);
+    else setError(result.error);
   }
 
   if (submitted) {
@@ -88,12 +92,21 @@ export function InvolveForm({ defaultRole }: { defaultRole?: string }) {
         />
       </div>
 
+      <input {...honeypotProps} className="hidden" />
+
+      {error && (
+        <p className="rounded-lg border border-accent/30 bg-accent-soft px-4 py-3 text-sm text-accent-strong">
+          {error}
+        </p>
+      )}
+
       <div className="flex justify-end pt-2">
         <button
           type="submit"
-          className="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+          disabled={pending}
+          className="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Submit interest
+          {pending ? "Sending…" : "Submit interest"}
         </button>
       </div>
     </form>

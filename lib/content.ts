@@ -8,9 +8,8 @@ export const event = {
   dateLabel: "Thursday, August 27, 2026",
   dateISO: "2026-08-27",
   format: "All-day, single-day event",
-  // TODO: confirm venue. Strong local candidates: SOPAC, Seton Hall, the public libraries.
   location: "South Orange + Maplewood, NJ",
-  venueLabel: "Venue to be announced",
+  venueLabel: "Columbia High School",
   // TODO: replace with a real address before launch.
   contactEmail: "hello@somastartup.com",
   prizePerDivision: 1000,
@@ -21,7 +20,7 @@ export const nav = [
   { label: "The Day", href: "/#day" },
   { label: "Divisions", href: "/#divisions" },
   { label: "Our Town", href: "/#town" },
-  { label: "Prizes", href: "/#prizes" },
+  { label: "Judges", href: "/#judges" },
   { label: "Where It Leads", href: "/#feeder" },
   { label: "Resources", href: "/resources" },
 ];
@@ -239,6 +238,51 @@ export const creativeScene = [
   {
     name: "Midtown Direct Rep",
     note: "A theater company founded by 32 local Broadway actors and techs who share the same train.",
+  },
+];
+
+export type Judge = {
+  name: string;
+  title: string;
+  href: string;
+  // Drop a headshot at this path in /public to replace the monogram fallback.
+  image?: string;
+  local?: boolean;
+};
+
+// Judging panel — a mix of local and international builders.
+export const judges: Judge[] = [
+  {
+    name: "Alexis Ohanian",
+    title: "Co-founder of Reddit",
+    href: "https://en.wikipedia.org/wiki/Alexis_Ohanian",
+    image: "/judges/alexis-ohanian.jpg",
+  },
+  {
+    name: "Kofi Amoo-Gottfried",
+    title: "Former CMO of DoorDash",
+    href: "https://www.linkedin.com/in/kofi-amoo-gottfried/",
+    image: "/judges/kofi-amoo-gottfried.jpg",
+  },
+  {
+    name: "Zach Braff",
+    title: "Actor & filmmaker · Columbia HS",
+    href: "https://en.wikipedia.org/wiki/Zach_Braff",
+    image: "/judges/zach-braff.jpg",
+    local: true,
+  },
+  {
+    name: "Rob Schutz",
+    title: "Co-founder of Ro",
+    href: "https://www.linkedin.com/in/robschutz/",
+    image: "/judges/rob-schutz.jpg",
+  },
+  {
+    name: "Sheena C. Collum",
+    title: "Mayor of South Orange",
+    href: "https://www.southorange.org/315/Mayor-Sheena-C-Collum",
+    image: "/judges/sheena-collum.jpg",
+    local: true,
   },
 ];
 

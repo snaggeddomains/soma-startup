@@ -3,19 +3,21 @@
 import { useState } from "react";
 import { Label, Input, Textarea, Select } from "@/components/forms/fields";
 import { divisions, event } from "@/lib/content";
+import { submitForm, honeypotProps } from "@/lib/submitForm";
 
-// SCAFFOLD: this form holds local state and shows a success screen.
-// To go live, POST `data` to a form service (Formspree, Google Forms,
-// Airtable, a Next.js route handler, etc.) inside handleSubmit.
 export function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    // TODO: send `data` to your backend / form service here.
-    console.log("Registration (demo):", data);
-    setSubmitted(true);
+    setPending(true);
+    setError(null);
+    const result = await submitForm("register", e.currentTarget);
+    setPending(false);
+    if (result.ok) setSubmitted(true);
+    else setError(result.error);
   }
 
   if (submitted) {
@@ -97,6 +99,14 @@ export function RegisterForm() {
         <Textarea id="idea" name="idea" placeholder="No idea yet? Totally fine — you can find one on the day." />
       </div>
 
+      <input {...honeypotProps} className="hidden" />
+
+      {error && (
+        <p className="rounded-lg border border-accent/30 bg-accent-soft px-4 py-3 text-sm text-accent-strong">
+          {error}
+        </p>
+      )}
+
       <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-sm text-xs text-ink-faint">
           By registering you&apos;ll receive event updates. Spots and any fees will be confirmed
@@ -104,9 +114,10 @@ export function RegisterForm() {
         </p>
         <button
           type="submit"
-          className="inline-flex shrink-0 items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent"
+          disabled={pending}
+          className="inline-flex shrink-0 items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Complete registration
+          {pending ? "Sending…" : "Complete registration"}
         </button>
       </div>
     </form>

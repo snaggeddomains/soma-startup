@@ -47,12 +47,23 @@ A few things still marked as first-draft assumptions (search for `TODO`):
 - **Contact email** — placeholder `hello@somastartup.org`.
 - **Registration fees / spots** — copy says "to be announced."
 
-## Forms
+## Forms & email
 
-The registration and "get involved" forms are **scaffolded** — they hold local state and
-show a success screen, but do not yet send data anywhere. Search for `SCAFFOLD` /
-`TODO` in `components/forms/` to find where to POST to a form service (Formspree, Google
-Forms, Airtable, or a Next.js route handler).
+The registration and "get involved" forms POST to `app/api/submit/route.ts`, which emails
+each submission to `CONTACT_EMAIL` (default `hello@somastartup.com`) via
+[Resend](https://resend.com).
+
+To enable it:
+
+1. Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` (from
+   [resend.com/api-keys](https://resend.com/api-keys)).
+2. Verify the `somastartup.com` domain in Resend, then set `RESEND_FROM` to a verified
+   address (e.g. `"SOMA Startup <hello@somastartup.com>"`). Until then the code falls back
+   to `onboarding@resend.dev`, which only delivers to the Resend account owner.
+3. Add the same variables in **Vercel → Settings → Environment Variables**, then redeploy.
+
+Submissions set `replyTo` to the submitter's email, so you can reply to the notification
+directly. A hidden honeypot field drops basic bot spam.
 
 ## Deploying
 

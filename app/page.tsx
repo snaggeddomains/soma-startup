@@ -3,6 +3,7 @@ import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Faq } from "@/components/Faq";
 import { Stripes, Badge, Sunburst } from "@/components/Retro";
+import { JudgeAvatar } from "@/components/JudgeAvatar";
 import {
   event,
   stats,
@@ -15,7 +16,18 @@ import {
   notableLocals,
   creativeScene,
   involveTracks,
+  judges,
 } from "@/lib/content";
+
+const avatarColors = ["bg-accent", "bg-gold", "bg-sage", "bg-plum", "bg-accent-strong"];
+
+function initials(name: string): string {
+  return name
+    .split(" ")
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("");
+}
 
 const divisionStyles: Record<string, { chip: string; dot: string; bar: string }> = {
   gold: { chip: "bg-gold-soft text-gold", dot: "bg-gold", bar: "bg-gold" },
@@ -61,7 +73,7 @@ export default function Home() {
               </Button>
             </div>
             <p className="mt-5 text-sm text-ink-faint">
-              {event.dateLabel} · {eventHours} · {event.location}
+              {event.dateLabel} · {eventHours} · {event.venueLabel}, {event.location}
             </p>
           </div>
         </Container>
@@ -120,14 +132,14 @@ export default function Home() {
               <p className="mt-5 leading-relaxed text-ink-soft">{heritage.body}</p>
 
               <p className="kicker mt-8 mb-3 text-ink-faint">A few who grew up here</p>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="grid gap-2 sm:grid-cols-2">
                 {notableLocals.map((p) => (
                   <li
                     key={p.name}
-                    className="rounded-full border border-line bg-paper px-3 py-1.5 text-sm"
+                    className="flex items-baseline gap-1.5 rounded-xl border border-line bg-paper px-3.5 py-2 text-sm"
                   >
                     <span className="font-medium">{p.name}</span>
-                    <span className="text-ink-faint"> · {p.note}</span>
+                    <span className="text-ink-faint">· {p.note}</span>
                   </li>
                 ))}
               </ul>
@@ -164,6 +176,11 @@ export default function Home() {
             intro="Age-based divisions keep expectations and judging developmentally appropriate. Younger builders are rewarded for creativity; older students are held to a higher bar."
             align="center"
           />
+          <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-ink-soft">
+            No matter the age, every team leaves with{" "}
+            <span className="font-medium text-ink">something real</span> — a working prototype,
+            a website, or a deck. This is where ideas turn into real-life activity.
+          </p>
           <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
             {divisions.map((d) => {
               const style = divisionStyles[d.color];
@@ -271,6 +288,49 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Judges */}
+      <section id="judges" className="scroll-mt-20 border-t border-line py-20 sm:py-24">
+        <Container>
+          <SectionHeading
+            kicker="Meet the judges"
+            title="Kids pitch to people who've actually built it."
+            intro="From Reddit and DoorDash to our own Columbia High School and Village Hall — a panel of local and world-class builders, weighing in with warmth."
+            align="center"
+          />
+          <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {judges.map((j, i) => (
+              <li key={j.name}>
+                <a
+                  href={j.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-lift group flex h-full flex-col items-center rounded-xl2 border border-line bg-paper p-6 text-center transition-colors hover:border-accent/40"
+                >
+                  <JudgeAvatar
+                    src={j.image}
+                    initials={initials(j.name)}
+                    colorClass={avatarColors[i % avatarColors.length]}
+                  />
+                  <h3 className="mt-4 font-display text-base font-semibold leading-snug">{j.name}</h3>
+                  <p className="mt-1 flex-1 text-sm leading-snug text-ink-soft">{j.title}</p>
+                  {j.local && (
+                    <span className="mt-3 rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-strong">
+                      SOMA local
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-center text-sm text-ink-faint">
+            Want to join the bench?{" "}
+            <a href="/get-involved" className="text-accent underline-offset-4 hover:underline">
+              Apply to judge or mentor →
+            </a>
+          </p>
+        </Container>
+      </section>
+
       {/* Where it leads — feeder system */}
       <section id="feeder" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
         <Container>
@@ -348,7 +408,7 @@ export default function Home() {
             Ready to build something this summer?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-            {event.dateLabel} · {eventHours} · {event.location}. Bring an idea or find one in the room.
+            {event.dateLabel} · {eventHours} · {event.venueLabel}. Bring an idea or find one in the room.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/register" variant="secondary" className="px-6 py-3 text-base">
