@@ -16,15 +16,15 @@ export function JudgeAvatar({
   const [failed, setFailed] = useState(false);
   return (
     <div
-      className={`relative grid h-20 w-20 place-items-center overflow-hidden rounded-full ${colorClass}`}
+      className={`relative grid h-28 w-28 place-items-center overflow-hidden rounded-full ${colorClass}`}
     >
-      <span className="font-display text-xl font-semibold text-paper">{initials}</span>
+      <span className="font-display text-3xl font-semibold text-paper">{initials}</span>
       {src && !failed && (
         <Image
           src={src}
           alt=""
           fill
-          sizes="80px"
+          sizes="112px"
           className="object-cover"
           onError={() => setFailed(true)}
         />
