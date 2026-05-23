@@ -205,8 +205,9 @@ function ExampleConcepts() {
   return (
     <div className="space-y-10">
       <p className="leading-relaxed text-ink-soft">
-        Starting points, not a box to fit inside. The best ideas usually come from something
-        you&apos;ve actually noticed — at school, at home, or around town.
+        Starting points, not a box to fit inside — your idea can be about anything. The best
+        ones usually come from something you&apos;ve actually noticed: at home, around town,
+        online, or out in the world.
       </p>
       {exampleConcepts.map((group) => (
         <div key={group.division}>

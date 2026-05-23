@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { Faq } from "@/components/Faq";
 import { Stripes, Badge, Sunburst } from "@/components/Retro";
 import { JudgeAvatar } from "@/components/JudgeAvatar";
+import { ShirtPhoto } from "@/components/ShirtPhoto";
 import {
   event,
   divisions,
@@ -420,6 +421,25 @@ export default function Home() {
             <Button href="/get-involved" className="px-6 py-3 text-base">
               Volunteer or partner with us
             </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* The 2026 shirt */}
+      <section className="border-y border-line bg-ink py-16 text-paper sm:py-20">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <p className="kicker mb-3 text-accent-soft">Wear it proud</p>
+              <h2 className="font-display text-balance text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl">
+                Every builder takes home the 2026 shirt.
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-white/70">
+                Soft heather gray, stamped with the soma&nbsp;/&nbsp;startup mark — yours the moment
+                you step up and pitch.
+              </p>
+            </div>
+            <ShirtPhoto src="/judges/soma_startup_2026_shirt.jpg" />
           </div>
         </Container>
       </section>

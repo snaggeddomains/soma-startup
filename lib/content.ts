@@ -382,27 +382,27 @@ export const exampleConcepts = [
     division: "Young Builders",
     grades: "Grades 4–5",
     ideas: [
-      { name: "Lost & Found Map", blurb: "A school app where you pin where you lost something so others can help find it." },
-      { name: "Recess Buddy", blurb: "A simple way to match kids who want to play the same game at recess." },
-      { name: "No-Waste Lunch", blurb: "A lunchbox that nudges kids to pack snacks without throwing food away." },
+      { name: "Chore Robot", blurb: "Dream up a robot that does the one chore everyone hates — and show how it works." },
+      { name: "Lemonade for a Cause", blurb: "A new spin on the lemonade stand where part of every sale helps something you care about." },
+      { name: "Critter Care", blurb: "A gadget or app that helps people take better care of their pets." },
     ],
   },
   {
     division: "Middle School",
     grades: "Grades 6–8",
     ideas: [
-      { name: "Homework Huddle", blurb: "A safe study-buddy finder that pairs classmates by subject and schedule." },
-      { name: "Locker Swap", blurb: "A marketplace for trading or sharing gently used sports gear between families." },
-      { name: "QuietHours", blurb: "An app that helps families set screen-free time together — without the fights." },
+      { name: "Fridge Rescue", blurb: "An app that turns food about to expire into recipe ideas, so less gets thrown out." },
+      { name: "Local Loop", blurb: "Borrow tools, gear, and gadgets from neighbors instead of buying new." },
+      { name: "Game for Good", blurb: "A mobile game that secretly teaches a real skill — budgeting, coding, or a new language." },
     ],
   },
   {
     division: "High School",
     grades: "Grades 9–12",
     ideas: [
-      { name: "RideShare for Practice", blurb: "A vetted carpool tool for teams and clubs so no one misses practice." },
-      { name: "FirstGen", blurb: "A peer-mentoring platform pairing seniors with younger first-gen college applicants." },
-      { name: "ShopLocal SOMA", blurb: "A student-built guide that drives foot traffic to South Orange & Maplewood small businesses." },
+      { name: "Heat Map", blurb: "Low-cost sensors that show a town which streets run hottest, so it knows where to plant trees." },
+      { name: "Refill", blurb: "Household staples delivered in reusable containers — groceries with zero packaging waste." },
+      { name: "CareMatch", blurb: "A trusted marketplace connecting families with vetted local caregivers." },
     ],
   },
 ];
