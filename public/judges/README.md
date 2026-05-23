@@ -1,13 +1,14 @@
 # Judge headshots
 
-Drop square headshots here, named exactly as referenced in `lib/content.ts`:
+Headshots referenced by `lib/content.ts` (`judges[].image`). Current files:
 
-- `alexis-ohanian.jpg` — Alexis Ohanian (Co-founder of Reddit)
-- `kofi-amoo-gottfried.jpg` — Kofi Amoo-Gottfried (Former CMO of DoorDash)
-- `zach-braff.jpg` — Zach Braff (Actor & filmmaker, Columbia HS)
-- `rob-schutz.jpg` — Rob Schutz (Co-founder of Ro)
-- `sheena-collum.jpg` — Sheena C. Collum (Mayor of South Orange)
+- `AO2.webp` — Alexis Ohanian (Co-founder of Reddit)
+- `kofi.jpeg` — Kofi Amoo-Gottfried (Former CMO of DoorDash)
+- `zb.jpeg` — Zach Braff (Actor & filmmaker, Columbia HS)
+- `schutz.jpeg` — Rob Schutz (Co-founder of Ro)
+- `sheena.jpeg` — Sheena C. Collum (Mayor of South Orange)
 
-Square images (roughly 400×400 or larger) look best — they're displayed in a
-circular crop. Until a file is present, that judge shows a colored monogram
-fallback automatically, so missing images never look broken.
+To swap a photo, replace the file (or add a new one and update the matching
+`image` path in `lib/content.ts`). Square images look best — they're shown in a
+circular crop. If a path doesn't resolve, that judge falls back to a colored
+monogram, so nothing ever looks broken.
