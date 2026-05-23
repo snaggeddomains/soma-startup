@@ -108,16 +108,21 @@ export default function Home() {
                 { Icon: Clock, label: "Time", value: eventHours, sub: "No coding required" },
                 { Icon: Pin, label: "Where", value: event.venueLabel, sub: event.location },
               ].map(({ Icon, label, value, sub }) => (
-                <div key={label} className="flex flex-col items-center gap-3 px-6 py-9 text-center">
-                  <span className="grid h-12 w-12 place-items-center rounded-full bg-accent-soft text-accent-strong">
+                <div
+                  key={label}
+                  className="flex items-center gap-4 px-5 py-5 text-left sm:flex-col sm:gap-3 sm:px-6 sm:py-9 sm:text-center"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong sm:h-12 sm:w-12">
                     <Icon />
                   </span>
-                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-faint">
-                    {label}
-                  </p>
                   <div>
-                    <p className="font-display text-xl font-semibold leading-tight">{value}</p>
-                    <p className="mt-1.5 text-sm text-ink-soft">{sub}</p>
+                    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-faint">
+                      {label}
+                    </p>
+                    <p className="font-display text-lg font-semibold leading-tight sm:mt-1 sm:text-xl">
+                      {value}
+                    </p>
+                    <p className="mt-0.5 text-sm text-ink-soft sm:mt-1.5">{sub}</p>
                   </div>
                 </div>
               ))}
