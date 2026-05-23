@@ -5,6 +5,18 @@ import { Label, Input, Textarea, Select } from "@/components/forms/fields";
 import { divisions, event } from "@/lib/content";
 import { submitForm, honeypotProps } from "@/lib/submitForm";
 
+const GRADES = [
+  "4th Grade",
+  "5th Grade",
+  "6th Grade",
+  "7th Grade",
+  "8th Grade",
+  "9th Grade",
+  "10th Grade",
+  "11th Grade",
+  "12th Grade",
+];
+
 export function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
@@ -64,9 +76,25 @@ export function RegisterForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <Label htmlFor="gradeSchool">Grade & school</Label>
-          <Input id="gradeSchool" name="gradeSchool" required placeholder="e.g. 7th grade, Columbia HS" />
+          <Label htmlFor="grade">Grade</Label>
+          <Select id="grade" name="grade" required defaultValue="">
+            <option value="" disabled>
+              Select a grade
+            </option>
+            {GRADES.map((g) => (
+              <option key={g} value={g}>
+                {g}
+              </option>
+            ))}
+          </Select>
         </div>
+        <div>
+          <Label htmlFor="school">School</Label>
+          <Input id="school" name="school" required placeholder="e.g. Columbia High School" />
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <Label htmlFor="town">Town of residence</Label>
           <Select id="town" name="town" required defaultValue="">
@@ -77,13 +105,12 @@ export function RegisterForm() {
             <option value="Maplewood">Maplewood</option>
           </Select>
         </div>
-      </div>
-
-      <div>
-        <Label htmlFor="teamName" optional>
-          Team name
-        </Label>
-        <Input id="teamName" name="teamName" placeholder="Coming solo? Leave blank." />
+        <div>
+          <Label htmlFor="teamName" optional>
+            Team name
+          </Label>
+          <Input id="teamName" name="teamName" placeholder="Coming solo? Leave blank." />
+        </div>
       </div>
 
       <div className="rounded-xl2 border border-line bg-cream p-5">

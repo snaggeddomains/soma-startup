@@ -10,7 +10,8 @@ const FROM = process.env.RESEND_FROM ?? "SOMA Startup <noreply@somastartup.com>"
 const labels: Record<string, string> = {
   participantName: "Participant name",
   division: "Division",
-  gradeSchool: "Grade & school",
+  grade: "Grade",
+  school: "School",
   teamName: "Team name",
   contactName: "Parent / guardian",
   email: "Email",
@@ -25,6 +26,22 @@ const labels: Record<string, string> = {
 
 function clean(value: unknown): string {
   return String(value ?? "").replace(/\s+/g, " ").slice(0, 2000).trim();
+}
+
+// Best-effort: append the submission to a Google Sheet via an Apps Script
+// webhook. Never blocks or fails the response — email is the source of truth.
+async function logToSheet(kind: string, fields: Record<string, string>) {
+  const url = process.env.SHEETS_WEBHOOK_URL;
+  if (!url) return;
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ kind, ...fields, submittedAt: new Date().toISOString() }),
+    });
+  } catch (err) {
+    console.error("Sheet log error:", err);
+  }
 }
 
 function escapeHtml(s: string): string {
@@ -66,6 +83,8 @@ export async function POST(req: Request) {
   ) as Record<string, string>;
 
   const replyTo = /.+@.+\..+/.test(fields.email ?? "") ? fields.email : undefined;
+
+  await logToSheet(kind, fields);
 
   const heading =
     kind === "register"
