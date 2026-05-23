@@ -49,7 +49,7 @@ export default function ResourcesPage() {
             Got the gist? Come build with us.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-ink-soft">
-            {event.dateLabel} · {event.venueLabel}, {event.location}
+            {event.location} · date &amp; venue to be announced
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/register" className="px-6 py-3 text-base">

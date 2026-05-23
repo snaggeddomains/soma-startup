@@ -16,7 +16,7 @@ export function Footer() {
               <span>startup</span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
-              {event.tagline} {event.dateLabel} · {event.venueLabel}, {event.location}.
+              {event.tagline} {event.location} · date &amp; venue to be announced.
             </p>
           </div>
 

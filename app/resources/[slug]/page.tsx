@@ -153,8 +153,8 @@ function DaySchedule() {
   return (
     <div className="space-y-8">
       <p className="leading-relaxed text-ink-soft">
-        Doors open at 9:00 AM and awards wrap by 6:00 PM, all at {event.venueLabel} in{" "}
-        {event.location}. One high-energy day, four parts.
+        Doors open at 9:00 AM and awards wrap by 6:00 PM — one high-energy day in{" "}
+        {event.location}. Venue to be announced.
       </p>
       <ol className="relative space-y-8 border-l border-line pl-8">
         {schedule.map((block) => (
@@ -276,7 +276,7 @@ export default async function ResourcePage({
           <ResourceBody slug={slug} />
 
           <div className="mt-14 flex flex-col items-center gap-3 border-t border-line pt-10 text-center print:hidden">
-            <p className="text-ink-soft">Ready to put it to work on {event.dateLabel.split(",")[0]}?</p>
+            <p className="text-ink-soft">Ready to put it to work?</p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button href="/register" className="px-6 py-3 text-base">
                 Register a student

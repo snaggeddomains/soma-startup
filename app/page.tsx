@@ -409,7 +409,7 @@ export default function Home() {
             Ready to build something this summer?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-            {event.dateLabel} · {eventHours} · {event.venueLabel}. Bring an idea or find one in the room.
+            Date &amp; venue TBD · {eventHours} · {event.location}. Bring an idea or find one in the room.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="/register" variant="secondary" className="px-6 py-3 text-base">

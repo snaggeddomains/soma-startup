@@ -6,7 +6,7 @@ import { divisions, event, principles } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Register",
-  description: `Register a student for ${event.name} on ${event.dateLabel}.`,
+  description: `Register a student for ${event.name}.`,
 };
 
 export default function RegisterPage() {
@@ -15,7 +15,7 @@ export default function RegisterPage() {
       <PageHeader
         kicker="Registration"
         title="Register for SOMA Startup"
-        intro={`${event.dateLabel} · ${event.venueLabel}, ${event.location}. Open to students who live in South Orange or Maplewood, grades 4 through 12.`}
+        intro="Date & venue to be announced. Open to students who live in South Orange or Maplewood, grades 4 through 12."
       />
 
       <section className="py-16 sm:py-20">

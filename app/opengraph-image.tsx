@@ -55,7 +55,7 @@ export default function Image() {
             color: "#6b675e",
           }}
         >
-          AUG 27, 2026 · SOUTH ORANGE + MAPLEWOOD
+SOUTH ORANGE + MAPLEWOOD, NJ
         </div>
       </div>
     ),

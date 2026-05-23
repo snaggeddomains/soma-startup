@@ -4,12 +4,12 @@
 export const event = {
   name: "SOMA Startup",
   tagline: "A town of makers — now it's the kids' turn.",
-  // Aug 27, 2026 falls on a Thursday, matching the brief.
-  dateLabel: "Thursday, August 27, 2026",
-  dateISO: "2026-08-27",
+  // Date & venue not yet announced.
+  dateLabel: "TBD",
+  dateISO: "",
   format: "All-day, single-day event",
   location: "South Orange + Maplewood, NJ",
-  venueLabel: "Columbia High School",
+  venueLabel: "TBD",
   // TODO: replace with a real address before launch.
   contactEmail: "hello@somastartup.com",
   prizePerDivision: 1000,
