@@ -20,7 +20,7 @@ export const nav = [
   { label: "Divisions", href: "/#divisions" },
   { label: "The Day", href: "/#day" },
   { label: "Judges", href: "/#judges" },
-  { label: "Our Town", href: "/#town" },
+  { label: "Where It Leads", href: "/#feeder" },
   { label: "Resources", href: "/resources" },
 ];
 
@@ -179,38 +179,6 @@ export const competitions: Competition[] = [
     audience: "Ages 13–18",
     href: "https://www.conradchallenge.org/",
   },
-];
-
-// Local heritage — warm, sourced facts about South Orange & Maplewood.
-export const heritage = {
-  lead: "South Orange and Maplewood have been a town of builders since the railroad arrived.",
-  body: "A short ride from New York, our towns filled with artists, writers, musicians, and makers — earning the nickname \"Brooklyn West.\" SOMA Startup hands that build-it-yourself spirit to the kids growing up here now.",
-  facts: [
-    { value: "1837", label: "the railroad reached Maplewood and the building began" },
-    { value: "1856", label: "Seton Hall University founded in South Orange" },
-    { value: "“Brooklyn West”", label: "the towns' name for their artsy, creative character" },
-    { value: "30 min", label: "to New York on the Midtown Direct line (since 1996)" },
-  ],
-};
-
-export type Local = {
-  name: string;
-  note: string;
-  town: string;
-};
-
-// Verified creatives connected to SOMA (all attended Columbia High School).
-export const notableLocals: Local[] = [
-  { name: "SZA", note: "Grammy-winning singer-songwriter", town: "Maplewood" },
-  { name: "Lauryn Hill", note: "Grammy-winning musician", town: "South Orange" },
-  { name: "Zach Braff", note: "Actor & filmmaker", town: "South Orange" },
-  { name: "Andre Braugher", note: "Acclaimed actor", town: "South Orange" },
-];
-
-export const creativeScene = [
-  { name: "SOPAC", note: "Performing arts center, since 2006" },
-  { name: "Maplewoodstock", note: "Free music festival, since 2004" },
-  { name: "Midtown Direct Rep", note: "Theater by local Broadway pros" },
 ];
 
 export type Judge = {

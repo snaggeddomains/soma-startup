@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Faq } from "@/components/Faq";
-import { Stripes, Badge, Sunburst } from "@/components/Retro";
+import { Badge, Sunburst } from "@/components/Retro";
 import { JudgeAvatar } from "@/components/JudgeAvatar";
 import { ShirtPhoto } from "@/components/ShirtPhoto";
 import {
@@ -12,9 +12,6 @@ import {
   schedule,
   eventHours,
   competitions,
-  heritage,
-  notableLocals,
-  creativeScene,
   involveTracks,
   judges,
 } from "@/lib/content";
@@ -261,56 +258,8 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Our Town — heritage & creative community */}
-      <section id="town" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
-        <Container>
-          <Stripes className="mb-10 max-w-[12rem]" />
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <p className="kicker mb-3">Our town</p>
-              <h2 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-[2.75rem]">
-                {heritage.lead}
-              </h2>
-              <p className="mt-5 leading-relaxed text-ink-soft">{heritage.body}</p>
-
-              <p className="kicker mt-8 mb-3 text-ink-faint">A few who grew up here</p>
-              <ul className="grid gap-2 sm:grid-cols-2">
-                {notableLocals.map((p) => (
-                  <li
-                    key={p.name}
-                    className="flex items-baseline gap-1.5 rounded-xl border border-line bg-paper px-3.5 py-2 text-sm"
-                  >
-                    <span className="font-medium">{p.name}</span>
-                    <span className="text-ink-faint">· {p.note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl2 border border-line bg-line">
-                {heritage.facts.map((f) => (
-                  <div key={f.label} className="bg-paper p-5">
-                    <dt className="font-display text-2xl font-semibold text-accent-strong">{f.value}</dt>
-                    <dd className="mt-1 text-sm leading-snug text-ink-soft">{f.label}</dd>
-                  </div>
-                ))}
-              </dl>
-              <div className="mt-4 grid gap-3">
-                {creativeScene.map((c) => (
-                  <div key={c.name} className="rounded-xl2 border border-line bg-paper px-5 py-4">
-                    <p className="font-medium">{c.name}</p>
-                    <p className="mt-0.5 text-sm leading-snug text-ink-soft">{c.note}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       {/* Why it matters */}
-      <section className="py-20 sm:py-24">
+      <section className="border-t border-line py-20 sm:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <p className="kicker mb-3">Why it matters</p>
