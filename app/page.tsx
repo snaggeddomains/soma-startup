@@ -131,51 +131,30 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Prizes */}
-      <section id="prizes" className="scroll-mt-20 py-20 sm:py-24">
-        <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <SectionHeading
-                kicker="Prizes & incentives"
-                title="A winner and a runner-up in every division."
-                intro="So a 4th grader and a college senior both walk away recognized — and winners keep getting mentorship long after the closing ceremony."
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-5">
-              {divisions.map((d) => {
-                const style = divisionStyles[d.color];
-                return (
-                  <div key={d.id} className="card-lift rounded-xl2 border border-line bg-paper p-6">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${style.chip}`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
-                      {d.name}
-                    </span>
-                    <p className="mt-3 font-display text-3xl font-semibold tracking-tight">
-                      ${event.prizePerDivision.toLocaleString()}
-                    </p>
-                    <p className="text-xs text-ink-faint">winner + mentorship</p>
-                    <p className="mt-2 border-t border-line pt-2 text-xs text-ink-soft">
-                      Runner-up recognized
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Divisions */}
-      <section id="divisions" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
+      {/* Divisions & prizes */}
+      <section id="divisions" className="scroll-mt-20 py-20 sm:py-24">
         <Container>
           <SectionHeading
-            kicker="Four divisions"
-            title="Everyone competes on a level playing field."
-            intro="Age-based divisions keep it fair — younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real: a working prototype, a website, or a deck."
+            kicker="Divisions & prizes"
+            title="Four divisions — the same prize for each."
+            intro="Age-based divisions keep it fair: younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real — a working prototype, a website, or a deck."
             align="center"
           />
-          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+
+          {/* One prize, every division */}
+          <div className="mx-auto mt-10 max-w-3xl rounded-xl2 border border-accent/25 bg-accent-soft/50 px-6 py-6">
+            <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-center sm:gap-5">
+              <span className="font-display text-4xl font-semibold leading-none text-accent-strong">
+                ${event.prizePerDivision.toLocaleString()}
+              </span>
+              <span className="text-ink-soft sm:text-left">
+                <span className="font-medium text-ink">to the winner of every division</span>, plus
+                continued mentorship — with a runner-up recognized in each.
+              </span>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-5 sm:grid-cols-2">
             {divisions.map((d) => {
               const style = divisionStyles[d.color];
               return (

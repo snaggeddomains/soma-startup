@@ -17,7 +17,6 @@ export const event = {
 };
 
 export const nav = [
-  { label: "Prizes", href: "/#prizes" },
   { label: "Divisions", href: "/#divisions" },
   { label: "The Day", href: "/#day" },
   { label: "Judges", href: "/#judges" },
