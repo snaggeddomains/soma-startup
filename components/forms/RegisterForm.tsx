@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Label, Input, Textarea, Select } from "@/components/forms/fields";
 import { divisions, event } from "@/lib/content";
 import { submitForm, honeypotProps } from "@/lib/submitForm";
@@ -21,6 +21,13 @@ export function RegisterForm() {
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // The success card is much shorter than the form, which leaves the viewport
+  // scrolled past it (down at the footer). Pull it back into view.
+  useEffect(() => {
+    if (submitted) successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [submitted]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,7 +41,7 @@ export function RegisterForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-xl2 border border-line bg-cream p-8 text-center">
+      <div ref={successRef} className="rounded-xl2 border border-line bg-cream p-8 text-center">
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-paper">✓</div>
         <h3 className="mt-4 text-xl font-semibold">You&apos;re on the list.</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-ink-soft">

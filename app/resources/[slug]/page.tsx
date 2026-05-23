@@ -163,10 +163,14 @@ function DaySchedule() {
       <ol className="relative space-y-8 border-l border-line pl-8">
         {schedule.map((block) => (
           <li key={block.title} className="relative">
-            <span className="absolute -left-[2.55rem] grid h-7 w-auto min-w-7 place-items-center rounded-full border border-line bg-paper px-1 font-mono text-[10px] font-medium text-accent-strong">
+            <span
+              className="absolute -left-[39px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-paper bg-accent"
+              aria-hidden
+            />
+            <span className="font-mono text-[11px] font-medium tracking-wide text-accent-strong">
               {block.time}
             </span>
-            <h3 className="font-display text-lg font-semibold">{block.title}</h3>
+            <h3 className="mt-1 font-display text-lg font-semibold">{block.title}</h3>
             <p className="mt-1 text-sm leading-relaxed text-ink-soft">{block.body}</p>
           </li>
         ))}
