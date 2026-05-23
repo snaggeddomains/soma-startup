@@ -15,7 +15,7 @@ export default function RegisterPage() {
       <PageHeader
         kicker="Registration"
         title="Register for SOMA Startup"
-        intro={`${event.dateLabel} · ${event.venueLabel}, ${event.location}. Bring an idea or find one in the room — every age group has a place.`}
+        intro={`${event.dateLabel} · ${event.venueLabel}, ${event.location}. Open to students who live in South Orange or Maplewood, grades 4 through college.`}
       />
 
       <section className="py-16 sm:py-20">

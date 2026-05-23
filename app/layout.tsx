@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: `%s · ${event.name}`,
   },
   description:
-    "A one-day, high-energy entrepreneurship event for South Orange & Maplewood students — from young kids through college. No coding, no experience required.",
+    "A one-day, high-energy entrepreneurship event for students who live in South Orange & Maplewood — grades 4 through college. No coding, no experience required.",
   openGraph: {
     title: `${event.name} — ${event.tagline}`,
     description:

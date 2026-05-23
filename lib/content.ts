@@ -17,11 +17,11 @@ export const event = {
 };
 
 export const nav = [
-  { label: "The Day", href: "/#day" },
+  { label: "Prizes", href: "/#prizes" },
   { label: "Divisions", href: "/#divisions" },
-  { label: "Our Town", href: "/#town" },
+  { label: "The Day", href: "/#day" },
   { label: "Judges", href: "/#judges" },
-  { label: "Where It Leads", href: "/#feeder" },
+  { label: "Our Town", href: "/#town" },
   { label: "Resources", href: "/resources" },
 ];
 
@@ -54,7 +54,7 @@ export const divisions: Division[] = [
   {
     id: "young",
     name: "Young Builders",
-    grades: "Up to 5th grade",
+    grades: "Grades 4–5",
     color: "gold",
     focus:
       "Imagination first. Spot a problem, dream up a fix, and show it off with a drawing, model, or story.",
@@ -327,16 +327,6 @@ export const involveTracks: InvolveTrack[] = [
     ],
   },
   {
-    id: "judge",
-    title: "Judge",
-    body: "Watch the pitches and help recognize the strongest ideas with warmth and credibility.",
-    bullets: [
-      "Investors, founders, educators, local business leaders",
-      "Score against a simple, age-aware rubric",
-      "Afternoon commitment on event day",
-    ],
-  },
-  {
     id: "sponsor",
     title: "Sponsor / Partner",
     body: "Fund prizes, provide a venue, or supply resources — and help build a lasting local institution.",
@@ -378,7 +368,7 @@ export const resources = [
 export const faqs = [
   {
     q: "Who can participate?",
-    a: "Any student in South Orange & Maplewood, from young kids through college. There are four age-based divisions so everyone competes fairly.",
+    a: "Students who live in South Orange or Maplewood, from 4th grade through college. There are four age-based divisions so everyone competes fairly.",
   },
   {
     q: "Do I need a team or an idea to start?",
@@ -397,7 +387,7 @@ export const faqs = [
     a: "Each division has one winner who receives a $1,000 cash prize plus continued mentorship from founders, operators, and builders.",
   },
   {
-    q: "How can I help as an advisor, judge, or sponsor?",
+    q: "How can I help as an advisor or sponsor?",
     a: "We'd love that. Head to the Get Involved page and tell us how you'd like to contribute.",
   },
 ];

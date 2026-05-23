@@ -6,7 +6,6 @@ import { Stripes, Badge, Sunburst } from "@/components/Retro";
 import { JudgeAvatar } from "@/components/JudgeAvatar";
 import {
   event,
-  stats,
   divisions,
   schedule,
   eventHours,
@@ -53,6 +52,24 @@ function Pin() {
   );
 }
 
+function Calendar() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+      <rect x="3" y="4.5" width="18" height="16" rx="2" />
+      <path d="M3 9.5h18M8 3v3M16 3v3" />
+    </svg>
+  );
+}
+
+function Clock() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7.5V12l3 2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -78,42 +95,182 @@ export default function Home() {
                 Register a student
               </Button>
               <Button href="/get-involved" variant="secondary" className="px-6 py-3 text-base">
-                Advise · judge · sponsor
+                Advise or sponsor
               </Button>
             </div>
-            <p className="mt-5 text-sm text-ink-faint">
-              {event.dateLabel} · {eventHours} · {event.venueLabel}, {event.location}
-            </p>
           </div>
-        </Container>
 
-        <Container className="relative pb-16">
-          <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-xl2 border border-line bg-line text-center md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label} className="bg-paper px-4 py-6">
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">{s.value}</dd>
-                <p className="mt-1 text-xs text-ink-faint">{s.label}</p>
+          {/* Prominent date / time / location */}
+          <div className="mx-auto mt-12 grid max-w-3xl gap-px overflow-hidden rounded-xl2 border border-line bg-line text-left sm:grid-cols-3">
+            <div className="flex items-start gap-3 bg-paper p-5">
+              <span className="mt-0.5 text-accent"><Calendar /></span>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">When</p>
+                <p className="font-display text-base font-semibold leading-snug">{event.dateLabel}</p>
+                <p className="text-xs text-accent-strong">One high-energy day</p>
               </div>
-            ))}
-          </dl>
+            </div>
+            <div className="flex items-start gap-3 bg-paper p-5">
+              <span className="mt-0.5 text-accent"><Clock /></span>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">Time</p>
+                <p className="font-display text-base font-semibold leading-snug">{eventHours}</p>
+                <p className="text-xs text-ink-soft">No coding required</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-paper p-5">
+              <span className="mt-0.5 text-accent"><Pin /></span>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">Where</p>
+                <p className="font-display text-base font-semibold leading-snug">{event.venueLabel}</p>
+                <p className="text-xs text-ink-soft">{event.location}</p>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
-      {/* Why it matters — concise mission */}
-      <section className="py-16 sm:py-20">
+      {/* Prizes */}
+      <section id="prizes" className="scroll-mt-20 py-20 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="kicker mb-3">Why it matters</p>
-            <h2 className="font-display text-balance text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl">
-              The hardest part isn&apos;t ability. It&apos;s exposure.
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionHeading
+                kicker="Prizes & incentives"
+                title="A winner and a runner-up in every division."
+                intro="So a 4th grader and a college senior both walk away recognized — and winners keep getting mentorship long after the closing ceremony."
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-5">
+              {divisions.map((d) => {
+                const style = divisionStyles[d.color];
+                return (
+                  <div key={d.id} className="card-lift rounded-xl2 border border-line bg-paper p-6">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${style.chip}`}>
+                      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
+                      {d.name}
+                    </span>
+                    <p className="mt-3 font-display text-3xl font-semibold tracking-tight">
+                      ${event.prizePerDivision.toLocaleString()}
+                    </p>
+                    <p className="text-xs text-ink-faint">winner + mentorship</p>
+                    <p className="mt-2 border-t border-line pt-2 text-xs text-ink-soft">
+                      Runner-up recognized
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Divisions */}
+      <section id="divisions" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
+        <Container>
+          <SectionHeading
+            kicker="Four divisions"
+            title="Everyone competes on a level playing field."
+            intro="Age-based divisions keep it fair — younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real: a working prototype, a website, or a deck."
+            align="center"
+          />
+          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
+            {divisions.map((d) => {
+              const style = divisionStyles[d.color];
+              return (
+                <div
+                  key={d.id}
+                  className="card-lift flex flex-col overflow-hidden rounded-xl2 border border-line bg-paper"
+                >
+                  <span className={`h-1.5 w-full ${style.bar}`} aria-hidden />
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center justify-between gap-3">
+                      <h3 className="font-display text-xl font-semibold">{d.name}</h3>
+                      <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${style.chip}`}>
+                        {d.grades}
+                      </span>
+                    </div>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{d.focus}</p>
+                    <p className="mt-4 border-t border-line pt-3 text-xs text-ink-faint">
+                      <span className="font-medium text-ink-soft">Judged on:</span> {d.judgedOn}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      {/* How the day works */}
+      <section id="day" className="scroll-mt-20 bg-ink py-20 text-paper sm:py-24">
+        <Container>
+          <div className="max-w-2xl">
+            <p className="kicker mb-3 text-accent-soft">How the day works</p>
+            <h2 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-[2.75rem]">
+              One day, four parts — {eventHours}.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
-              Most kids have never been handed a framework for how an idea becomes something
-              real. We give them that early — so they grow up seeing startups as things they
-              can shape, not just consume.
+            <p className="mt-4 text-lg leading-relaxed text-white/70">
+              A clear beginning, middle, and end — built for any age.
             </p>
           </div>
+
+          <ol className="mt-12 grid gap-px overflow-hidden rounded-xl2 border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+            {schedule.map((block, i) => (
+              <li key={block.title} className="flex flex-col bg-ink p-6">
+                <div className="flex items-baseline justify-between">
+                  <span className="font-display text-lg font-semibold text-accent-soft">{block.time}</span>
+                  <span className="font-display text-2xl text-white/25">{i + 1}</span>
+                </div>
+                <h3 className="mt-3 font-display text-lg font-semibold leading-snug">{block.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">{block.body}</p>
+              </li>
+            ))}
+          </ol>
+
+          <p className="mt-6 text-sm text-white/45">
+            Curious about the worksheet, pitch template, and rubric?{" "}
+            <a href="/resources" className="text-accent-soft underline-offset-4 hover:underline">
+              See the participant toolkit →
+            </a>
+          </p>
+        </Container>
+      </section>
+
+      {/* Judges */}
+      <section id="judges" className="scroll-mt-20 py-20 sm:py-24">
+        <Container>
+          <SectionHeading
+            kicker="Meet the judges"
+            title="Kids pitch to people who've actually built it."
+            intro="From Reddit and DoorDash to our own Columbia High School and Village Hall — a panel of local and world-class builders, weighing in with warmth."
+            align="center"
+          />
+          <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {judges.map((j, i) => (
+              <li key={j.name}>
+                <a
+                  href={j.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-lift group flex h-full flex-col items-center rounded-xl2 border border-line bg-paper p-6 text-center transition-colors hover:border-accent/40"
+                >
+                  <JudgeAvatar
+                    src={j.image}
+                    initials={initials(j.name)}
+                    colorClass={avatarColors[i % avatarColors.length]}
+                  />
+                  <h3 className="mt-4 font-display text-base font-semibold leading-snug">{j.name}</h3>
+                  <p className="mt-1 flex-1 text-sm leading-snug text-ink-soft">{j.title}</p>
+                  {j.local && (
+                    <span className="mt-3 rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-strong">
+                      SOMA local
+                    </span>
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -165,218 +322,85 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Divisions */}
-      <section id="divisions" className="scroll-mt-20 py-20 sm:py-24">
+      {/* Why it matters + Where it leads */}
+      <section id="feeder" className="scroll-mt-20 py-20 sm:py-24">
         <Container>
-          <SectionHeading
-            kicker="Four divisions"
-            title="Everyone competes on a level playing field."
-            intro="Age-based divisions keep it fair — younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real: a working prototype, a website, or a deck."
-            align="center"
-          />
-          <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
-            {divisions.map((d) => {
-              const style = divisionStyles[d.color];
-              return (
-                <div
-                  key={d.id}
-                  className="card-lift flex flex-col overflow-hidden rounded-xl2 border border-line bg-paper"
-                >
-                  <span className={`h-1.5 w-full ${style.bar}`} aria-hidden />
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="font-display text-xl font-semibold">{d.name}</h3>
-                      <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${style.chip}`}>
-                        {d.grades}
-                      </span>
-                    </div>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{d.focus}</p>
-                    <p className="mt-4 border-t border-line pt-3 text-xs text-ink-faint">
-                      <span className="font-medium text-ink-soft">Judged on:</span> {d.judgedOn}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* How the day works */}
-      <section id="day" className="scroll-mt-20 border-y border-line bg-ink py-20 text-paper sm:py-24">
-        <Container>
-          <div className="max-w-2xl">
-            <p className="kicker mb-3 text-accent-soft">How the day works</p>
-            <h2 className="font-display text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-[2.75rem]">
-              One day, four parts — {eventHours}.
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="kicker mb-3">Why it matters</p>
+            <h2 className="font-display text-balance text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl">
+              The hardest part isn&apos;t ability. It&apos;s exposure.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-white/70">
-              A clear beginning, middle, and end — built for any age.
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              Most kids have never been handed a framework for how an idea becomes something
+              real. We give them that early — so they grow up seeing startups as things they
+              can shape, not just consume.
             </p>
           </div>
-
-          <ol className="mt-12 grid gap-px overflow-hidden rounded-xl2 border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {schedule.map((block, i) => (
-              <li key={block.title} className="flex flex-col bg-ink p-6">
-                <div className="flex items-baseline justify-between">
-                  <span className="font-display text-lg font-semibold text-accent-soft">{block.time}</span>
-                  <span className="font-display text-2xl text-white/25">{i + 1}</span>
-                </div>
-                <h3 className="mt-3 font-display text-lg font-semibold leading-snug">{block.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">{block.body}</p>
-              </li>
-            ))}
-          </ol>
-
-          <p className="mt-6 text-sm text-white/45">
-            Curious about the worksheet, pitch template, and rubric?{" "}
-            <a href="/resources" className="text-accent-soft underline-offset-4 hover:underline">
-              See the participant toolkit →
-            </a>
-          </p>
-        </Container>
-      </section>
-
-      {/* Prizes */}
-      <section id="prizes" className="scroll-mt-20 py-20 sm:py-24">
-        <Container>
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <SectionHeading
-                kicker="Prizes & incentives"
-                title="A winner and a runner-up in every division."
-                intro="So a 4th grader and a college senior both walk away recognized — and winners keep getting mentorship long after the closing ceremony."
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-5">
-              {divisions.map((d) => {
-                const style = divisionStyles[d.color];
-                return (
-                  <div key={d.id} className="card-lift rounded-xl2 border border-line bg-paper p-6">
-                    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${style.chip}`}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${style.dot}`} />
-                      {d.name}
-                    </span>
-                    <p className="mt-3 font-display text-3xl font-semibold tracking-tight">
-                      ${event.prizePerDivision.toLocaleString()}
-                    </p>
-                    <p className="text-xs text-ink-faint">winner + mentorship</p>
-                    <p className="mt-2 border-t border-line pt-2 text-xs text-ink-soft">
-                      Runner-up recognized
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Judges */}
-      <section id="judges" className="scroll-mt-20 border-t border-line py-20 sm:py-24">
-        <Container>
-          <SectionHeading
-            kicker="Meet the judges"
-            title="Kids pitch to people who've actually built it."
-            intro="From Reddit and DoorDash to our own Columbia High School and Village Hall — a panel of local and world-class builders, weighing in with warmth."
-            align="center"
-          />
-          <ul className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {judges.map((j, i) => (
-              <li key={j.name}>
-                <a
-                  href={j.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card-lift group flex h-full flex-col items-center rounded-xl2 border border-line bg-paper p-6 text-center transition-colors hover:border-accent/40"
-                >
-                  <JudgeAvatar
-                    src={j.image}
-                    initials={initials(j.name)}
-                    colorClass={avatarColors[i % avatarColors.length]}
-                  />
-                  <h3 className="mt-4 font-display text-base font-semibold leading-snug">{j.name}</h3>
-                  <p className="mt-1 flex-1 text-sm leading-snug text-ink-soft">{j.title}</p>
-                  {j.local && (
-                    <span className="mt-3 rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-strong">
-                      SOMA local
-                    </span>
-                  )}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-center text-sm text-ink-faint">
-            Want to join the bench?{" "}
-            <a href="/get-involved" className="text-accent underline-offset-4 hover:underline">
-              Apply to judge or mentor →
-            </a>
-          </p>
-        </Container>
-      </section>
-
-      {/* Where it leads — feeder system */}
-      <section id="feeder" className="scroll-mt-20 border-y border-line bg-cream py-20 sm:py-24">
-        <Container>
-          <SectionHeading
-            kicker="Where it leads"
-            title="An on-ramp to bigger stages."
-            intro="We don't compete with the major student competitions — we get kids ready for them, starting in our own backyard."
-            align="center"
-          />
 
           {(() => {
             const featured = competitions.find((c) => c.local);
             const others = competitions.filter((c) => !c.local);
             return (
-              <div className="mx-auto mt-12 max-w-4xl space-y-4">
-                {featured && (
-                  <a
-                    href={featured.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-lift group flex items-center gap-5 rounded-xl2 border border-accent/30 bg-accent-soft/60 p-6 transition-colors hover:border-accent/60"
-                  >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-paper">
-                      <Pin />
-                    </span>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-display text-lg font-semibold">{featured.name}</h3>
-                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
-                          Local
-                        </span>
-                      </div>
-                      <p className="mt-0.5 text-sm text-ink-soft">{featured.tag}</p>
-                    </div>
-                    <span className="hidden text-2xl text-accent transition-transform group-hover:translate-x-0.5 sm:block" aria-hidden>
-                      →
-                    </span>
-                  </a>
-                )}
+              <div className="mx-auto mt-16 max-w-4xl">
+                <div className="mx-auto max-w-2xl text-center">
+                  <p className="kicker mb-3">Where it leads</p>
+                  <h3 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                    An on-ramp to bigger stages.
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-soft">
+                    We don&apos;t compete with the major student competitions — we get kids ready for
+                    them, starting in our own backyard.
+                  </p>
+                </div>
 
-                <p className="pt-2 text-center text-sm text-ink-faint">
-                  …then national & global programs we prepare you for:
-                </p>
-
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {others.map((c) => (
+                <div className="mt-8 space-y-4">
+                  {featured && (
                     <a
-                      key={c.name}
-                      href={c.href}
+                      href={featured.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex flex-col items-center rounded-xl2 border border-line bg-paper p-5 text-center transition-colors hover:border-accent/40"
+                      className="card-lift group flex items-center gap-5 rounded-xl2 border border-accent/30 bg-accent-soft/60 p-6 transition-colors hover:border-accent/60"
                     >
-                      <span className="grid h-10 w-10 place-items-center rounded-full bg-cream text-ink-soft transition-colors group-hover:text-accent">
-                        <Globe />
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-paper">
+                        <Pin />
                       </span>
-                      <h3 className="mt-3 font-display text-sm font-semibold leading-snug">{c.name}</h3>
-                      <p className="mt-1 flex-1 text-xs leading-snug text-ink-soft">{c.tag}</p>
-                      <p className="mt-2 text-[11px] text-ink-faint">{c.audience}</p>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-display text-lg font-semibold">{featured.name}</h4>
+                          <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
+                            Local
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-sm text-ink-soft">{featured.tag}</p>
+                      </div>
+                      <span className="hidden text-2xl text-accent transition-transform group-hover:translate-x-0.5 sm:block" aria-hidden>
+                        →
+                      </span>
                     </a>
-                  ))}
+                  )}
+
+                  <p className="pt-2 text-center text-sm text-ink-faint">
+                    …then national & global programs we prepare you for:
+                  </p>
+
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {others.map((c) => (
+                      <a
+                        key={c.name}
+                        href={c.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col items-center rounded-xl2 border border-line bg-paper p-5 text-center transition-colors hover:border-accent/40"
+                      >
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-cream text-ink-soft transition-colors group-hover:text-accent">
+                          <Globe />
+                        </span>
+                        <h4 className="mt-3 font-display text-sm font-semibold leading-snug">{c.name}</h4>
+                        <p className="mt-1 flex-1 text-xs leading-snug text-ink-soft">{c.tag}</p>
+                        <p className="mt-2 text-[11px] text-ink-faint">{c.audience}</p>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
@@ -385,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* Get involved */}
-      <section className="py-20 sm:py-24">
+      <section className="border-y border-line bg-cream py-20 sm:py-24">
         <Container>
           <SectionHeading
             kicker="Get involved"
@@ -393,9 +417,9 @@ export default function Home() {
             intro="A warm bench of local founders, creatives, and builders is what makes SOMA Startup real — and shows kids the range of paths a maker can take."
             align="center"
           />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
             {involveTracks.map((t) => (
-              <div key={t.id} className="card-lift flex flex-col rounded-xl2 border border-line bg-cream p-7">
+              <div key={t.id} className="card-lift flex flex-col rounded-xl2 border border-line bg-paper p-7">
                 <h3 className="font-display text-lg font-semibold">{t.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{t.body}</p>
               </div>
@@ -410,7 +434,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-line py-20 sm:py-24">
+      <section className="py-20 sm:py-24">
         <Container className="max-w-3xl">
           <SectionHeading kicker="FAQ" title="Questions, answered." align="center" className="mb-12" />
           <Faq />

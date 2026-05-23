@@ -25,7 +25,7 @@ export default function ResourcesPage() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {resources.map((r) => (
               <div key={r.title} className="flex flex-col rounded-xl2 border border-line p-6">
-                <h2 className="text-base font-semibold">{r.title}</h2>
+                <h2 className="font-display text-base font-semibold">{r.title}</h2>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{r.body}</p>
                 {/* TODO: link these to real PDFs/Google Docs once the toolkit is produced. */}
                 <span className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-cream px-3 py-1 text-xs text-ink-faint ring-1 ring-line">
@@ -37,30 +37,27 @@ export default function ResourcesPage() {
         </Container>
       </section>
 
-      {/* The pitch template, inline */}
+      {/* The pitch template + idea worksheet, inline */}
       <section className="border-t border-line bg-cream py-16 sm:py-20">
         <Container>
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="kicker mb-3">Pitch template</p>
-              <h2 className="text-2xl font-semibold tracking-tight">Five slides. Two minutes. Done.</h2>
+              <p className="kicker mb-3">Idea worksheet</p>
+              <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                From a hunch to a concept.
+              </h2>
               <p className="mt-3 leading-relaxed text-ink-soft">
-                Every great pitch answers five questions. Fill these in and you have a complete
-                presentation — polish is optional, clarity is everything.
+                The six questions your advisor will help you answer — in order.
               </p>
-              <ol className="mt-6 space-y-3">
-                {[
-                  ["The problem", "What did you notice that bugs people?"],
-                  ["The solution", "What's your idea, in one clear sentence?"],
-                  ["Who it's for", "Who has this problem most?"],
-                  ["Why it matters", "What changes if your idea exists?"],
-                  ["What's exciting", "What makes it different or surprising?"],
-                ].map(([title, hint], i) => (
-                  <li key={title} className="flex gap-3 rounded-lg border border-line bg-paper p-4">
-                    <span className="font-mono text-sm text-accent-strong">{String(i + 1).padStart(2, "0")}</span>
+              <ol className="mt-6 space-y-4">
+                {buildFramework.map((f, i) => (
+                  <li key={f.q} className="flex gap-3.5">
+                    <span className="font-display text-lg font-semibold text-accent-strong">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span>
-                      <span className="block text-sm font-medium">{title}</span>
-                      <span className="block text-sm text-ink-soft">{hint}</span>
+                      <span className="block text-sm font-medium">{f.q}</span>
+                      <span className="block text-sm text-ink-soft">{f.hint}</span>
                     </span>
                   </li>
                 ))}
@@ -68,19 +65,28 @@ export default function ResourcesPage() {
             </div>
 
             <div>
-              <p className="kicker mb-3">Idea worksheet</p>
-              <h2 className="text-2xl font-semibold tracking-tight">From a hunch to a concept.</h2>
+              <p className="kicker mb-3">Pitch template</p>
+              <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                Five slides. Two minutes. Done.
+              </h2>
               <p className="mt-3 leading-relaxed text-ink-soft">
-                The same six questions mentors will ask you. Work through them in order — each one
-                makes the next easier.
+                Answer these five and you have a complete pitch — clarity over polish.
               </p>
-              <ol className="mt-6 space-y-3">
-                {buildFramework.map((f, i) => (
-                  <li key={f.q} className="flex gap-3 rounded-lg border border-line bg-paper p-4">
-                    <span className="font-mono text-sm text-accent-strong">{String(i + 1).padStart(2, "0")}</span>
+              <ol className="mt-6 space-y-4">
+                {[
+                  ["The problem", "What did you notice that bugs people?"],
+                  ["The solution", "Your idea, in one clear sentence."],
+                  ["Who it's for", "Who has this problem most?"],
+                  ["Why it matters", "What changes if your idea exists?"],
+                  ["What's exciting", "What makes it different or surprising?"],
+                ].map(([title, hint], i) => (
+                  <li key={title} className="flex gap-3.5">
+                    <span className="font-display text-lg font-semibold text-accent-strong">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span>
-                      <span className="block text-sm font-medium">{f.q}</span>
-                      <span className="block text-sm text-ink-soft">{f.hint}</span>
+                      <span className="block text-sm font-medium">{title}</span>
+                      <span className="block text-sm text-ink-soft">{hint}</span>
                     </span>
                   </li>
                 ))}
@@ -94,9 +100,11 @@ export default function ResourcesPage() {
       <section className="py-16 sm:py-20">
         <Container>
           <p className="kicker mb-3">Judging rubric</p>
-          <h2 className="text-2xl font-semibold tracking-tight">Exactly what judges look for.</h2>
+          <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+            Exactly what judges look for.
+          </h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-ink-soft">
-            No surprises. Teams are recognized against these criteria, scaled to their division.
+            No surprises — teams are scored against these, scaled to their division.
           </p>
           <div className="mt-8 overflow-hidden rounded-xl2 border border-line">
             <table className="w-full text-left text-sm">

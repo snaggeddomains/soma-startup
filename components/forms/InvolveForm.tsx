@@ -26,7 +26,7 @@ export function InvolveForm({ defaultRole }: { defaultRole?: string }) {
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-paper">✓</div>
         <h3 className="mt-4 text-xl font-semibold">Thank you.</h3>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-ink-soft">
-          We&apos;re building a warm bench of mentors, judges, and partners — and we&apos;ll reach out
+          We&apos;re building a warm bench of advisors and partners — and we&apos;ll reach out
           shortly to talk through how you&apos;d like to help.
         </p>
       </div>

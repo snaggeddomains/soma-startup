@@ -68,11 +68,22 @@ export function RegisterForm() {
           <Input id="gradeSchool" name="gradeSchool" required placeholder="e.g. 7th grade, Columbia HS" />
         </div>
         <div>
-          <Label htmlFor="teamName" optional>
-            Team name
-          </Label>
-          <Input id="teamName" name="teamName" placeholder="Coming solo? Leave blank." />
+          <Label htmlFor="town">Town of residence</Label>
+          <Select id="town" name="town" required defaultValue="">
+            <option value="" disabled>
+              Select a town
+            </option>
+            <option value="South Orange">South Orange</option>
+            <option value="Maplewood">Maplewood</option>
+          </Select>
         </div>
+      </div>
+
+      <div>
+        <Label htmlFor="teamName" optional>
+          Team name
+        </Label>
+        <Input id="teamName" name="teamName" placeholder="Coming solo? Leave blank." />
       </div>
 
       <div className="rounded-xl2 border border-line bg-cream p-5">

@@ -46,7 +46,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/get-involved" className="text-ink-soft hover:text-ink">
-                  Mentor, judge, or sponsor
+                  Advise or sponsor
                 </Link>
               </li>
               <li>
