@@ -3,10 +3,9 @@ import { Resend } from "resend";
 import { event } from "@/lib/content";
 
 const TO = process.env.CONTACT_EMAIL ?? event.contactEmail;
-// Until somastartup.com is verified in Resend, the onboarding default only
-// delivers to the Resend account owner. Set RESEND_FROM to a verified address
-// (e.g. "SOMA Startup <hello@somastartup.com>") for production.
-const FROM = process.env.RESEND_FROM ?? "SOMA Startup <onboarding@resend.dev>";
+// somastartup.com is verified in Resend, so we send from it by default.
+// Override with RESEND_FROM if you'd prefer a different verified address.
+const FROM = process.env.RESEND_FROM ?? "SOMA Startup <noreply@somastartup.com>";
 
 const labels: Record<string, string> = {
   participantName: "Participant name",
