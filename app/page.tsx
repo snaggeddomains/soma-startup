@@ -101,30 +101,26 @@ export default function Home() {
           </div>
 
           {/* Prominent date / time / location */}
-          <div className="mx-auto mt-12 grid max-w-3xl gap-px overflow-hidden rounded-xl2 border border-line bg-line text-left sm:grid-cols-3">
-            <div className="flex items-start gap-3 bg-paper p-5">
-              <span className="mt-0.5 text-accent"><Calendar /></span>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">When</p>
-                <p className="font-display text-base font-semibold leading-snug">{event.dateLabel}</p>
-                <p className="text-xs text-accent-strong">One high-energy day</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 bg-paper p-5">
-              <span className="mt-0.5 text-accent"><Clock /></span>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">Time</p>
-                <p className="font-display text-base font-semibold leading-snug">{eventHours}</p>
-                <p className="text-xs text-ink-soft">No coding required</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 bg-paper p-5">
-              <span className="mt-0.5 text-accent"><Pin /></span>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-ink-faint">Where</p>
-                <p className="font-display text-base font-semibold leading-snug">{event.venueLabel}</p>
-                <p className="text-xs text-ink-soft">{event.location}</p>
-              </div>
+          <div className="mx-auto mt-14 max-w-4xl">
+            <div className="card-lift grid divide-y divide-line overflow-hidden rounded-xl2 border border-line bg-paper sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+              {[
+                { Icon: Calendar, label: "When", value: event.dateLabel, sub: "One high-energy day" },
+                { Icon: Clock, label: "Time", value: eventHours, sub: "No coding required" },
+                { Icon: Pin, label: "Where", value: event.venueLabel, sub: event.location },
+              ].map(({ Icon, label, value, sub }) => (
+                <div key={label} className="flex flex-col items-center gap-3 px-6 py-9 text-center">
+                  <span className="grid h-12 w-12 place-items-center rounded-full bg-accent-soft text-accent-strong">
+                    <Icon />
+                  </span>
+                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-faint">
+                    {label}
+                  </p>
+                  <div>
+                    <p className="font-display text-xl font-semibold leading-tight">{value}</p>
+                    <p className="mt-1.5 text-sm text-ink-soft">{sub}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </Container>

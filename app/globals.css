@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm, local, hand-made palette — ivory paper + espresso ink + clay accent. */
-  --color-ink: #251d16;
-  --color-ink-soft: #5b5046;
-  --color-ink-faint: #8b7d6f;
-  --color-paper: #fdf9f1;
-  --color-cream: #f4ebdb;
-  --color-line: #e7dcc8;
+  /* Finalized SOMA / Startup brand — paper, ink, coral. */
+  --color-ink: #0e0e0c;
+  --color-ink-soft: #2a2620;
+  --color-ink-faint: #6b675e;
+  --color-paper: #f7f3e8;
+  --color-cream: #ece4d2;
+  --color-line: #e2dac4;
 
-  /* Clay / terracotta — the warm primary accent. */
-  --color-accent: #c25a35;
-  --color-accent-strong: #9c4422;
-  --color-accent-soft: #f8e6da;
+  /* Coral — the single brand accent (reserved for the slash & key moments). */
+  --color-accent: #ee4a2a;
+  --color-accent-strong: #c4371b;
+  --color-accent-soft: #fce5dd;
 
-  /* Supporting earthy hues for the four divisions. */
+  /* Supporting hues used only for division wayfinding (chips/bars). */
   --color-gold: #b07d18;
-  --color-gold-soft: #faf0d4;
+  --color-gold-soft: #f7eed2;
   --color-sage: #5d7345;
-  --color-sage-soft: #eaf0de;
+  --color-sage-soft: #e8eedb;
   --color-plum: #8a4a6b;
-  --color-plum-soft: #f4e6ed;
+  --color-plum-soft: #f2e4ec;
 
   --font-sans: var(--font-geist-sans);
-  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
 
   --radius-xl2: 1.25rem;
 }
@@ -49,33 +49,32 @@
 }
 
 @layer utilities {
-  /* Editorial serif for display headings. */
+  /* Display headings — Geist, tightly tracked, matching the wordmark. */
   .font-display {
-    font-family: var(--font-display), Georgia, serif;
-    font-optical-sizing: auto;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    letter-spacing: -0.03em;
   }
 
-  /* Warm, letterspaced label that sits above section headings. */
+  /* Mono, uppercase, letterspaced label — the brand's meta style. */
   .kicker {
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-accent-strong);
   }
 
-  /* Soft warm card shadow for lift on tonal backgrounds. */
   .card-lift {
     box-shadow:
-      0 1px 0 0 rgba(37, 29, 22, 0.04),
-      0 14px 34px -18px rgba(37, 29, 22, 0.25);
+      0 1px 0 0 rgba(14, 14, 12, 0.04),
+      0 14px 34px -18px rgba(14, 14, 12, 0.22);
   }
 
-  /* Subtle dotted texture for hero / feature sections. */
   .bg-grid {
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(37, 29, 22, 0.06) 1px,
+      rgba(14, 14, 12, 0.06) 1px,
       transparent 0
     );
     background-size: 24px 24px;

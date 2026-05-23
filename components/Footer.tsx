@@ -10,13 +10,10 @@ export function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2.5 tracking-tight">
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-accent font-display text-[15px] font-semibold text-paper">
-                S
-              </span>
-              <span className="font-display text-[17px] font-semibold">
-                SOMA <span className="text-accent">Startup</span>
-              </span>
+            <div className="inline-flex items-center font-display text-[19px] font-semibold lowercase tracking-[-0.03em] text-ink">
+              <span>soma</span>
+              <span className="px-[1px] font-light text-accent">/</span>
+              <span>startup</span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
               {event.tagline} {event.dateLabel} · {event.venueLabel}, {event.location}.

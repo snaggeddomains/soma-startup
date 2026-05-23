@@ -9,13 +9,13 @@ import { cn } from "@/lib/cn";
 
 function Wordmark() {
   return (
-    <Link href="/" className="group flex items-center gap-2.5 tracking-tight">
-      <span className="grid h-8 w-8 place-items-center rounded-xl bg-accent font-display text-[15px] font-semibold text-paper transition-transform group-hover:-rotate-6">
-        S
-      </span>
-      <span className="font-display text-[17px] font-semibold">
-        SOMA <span className="text-accent">Startup</span>
-      </span>
+    <Link
+      href="/"
+      className="group inline-flex items-center font-display text-[19px] font-semibold lowercase tracking-[-0.03em] text-ink"
+    >
+      <span>soma</span>
+      <span className="px-[1px] font-light text-accent transition-transform group-hover:rotate-6">/</span>
+      <span>startup</span>
     </Link>
   );
 }

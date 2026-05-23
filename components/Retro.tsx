@@ -39,7 +39,7 @@ export function Sunburst({ className }: { className?: string }) {
       aria-hidden
       style={{
         background:
-          "repeating-conic-gradient(from 0deg, rgba(194,90,53,0.10) 0deg 6deg, transparent 6deg 12deg)",
+          "repeating-conic-gradient(from 0deg, rgba(238,74,42,0.10) 0deg 6deg, transparent 6deg 12deg)",
         maskImage: "radial-gradient(closest-side, #000 10%, transparent 72%)",
         WebkitMaskImage: "radial-gradient(closest-side, #000 10%, transparent 72%)",
       }}
