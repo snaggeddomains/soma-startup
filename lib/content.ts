@@ -326,28 +326,84 @@ export const involveTracks: InvolveTrack[] = [
 
 export const resources = [
   {
+    slug: "idea-worksheet",
     title: "Idea Worksheet",
     body: "A one-page guide that walks any age from a problem they've noticed to a simple solution.",
   },
   {
+    slug: "pitch-template",
     title: "Pitch Template",
     body: "The five-part structure: problem, solution, who it's for, why it matters, and what's exciting.",
   },
   {
+    slug: "judging-rubric",
     title: "Judging Rubric",
     body: "The same criteria judges use, so teams know exactly what they're being recognized for.",
   },
   {
+    slug: "day-schedule",
     title: "Day Schedule",
     body: "The full run of the day, from kickoff energy to the closing awards.",
   },
   {
+    slug: "slide-template",
     title: "Slide Template",
-    body: "An optional, clean deck so teams can present with confidence — polish is never required.",
+    body: "A clean, six-slide deck outline so teams can present with confidence — polish is never required.",
   },
   {
+    slug: "example-concepts",
     title: "Example Concepts",
     body: "Student-friendly startup ideas, by division, to spark thinking without boxing anyone in.",
+  },
+];
+
+// Pitch template — the five parts of a two-minute pitch.
+export const pitchTemplate = [
+  { title: "The problem", prompt: "What did you notice that bugs people?" },
+  { title: "The solution", prompt: "Your idea, in one clear sentence." },
+  { title: "Who it's for", prompt: "Who has this problem most?" },
+  { title: "Why it matters", prompt: "What changes if your idea exists?" },
+  { title: "What's exciting", prompt: "What makes it different or surprising?" },
+];
+
+// Slide template — a six-slide deck outline (works in Slides, Canva, or Keynote).
+export const slideOutline = [
+  { title: "Title", body: "Your idea's name, your team, and your division. One bold line that says what it is." },
+  { title: "The problem", body: "The thing you noticed that bugs people. Make us feel it." },
+  { title: "The solution", body: "Your idea in one sentence, plus a sketch or screenshot of your prototype." },
+  { title: "Who it's for", body: "The one person who has this problem most — give them a name and a face." },
+  { title: "Why it matters", body: "What changes if your idea exists? Why should anyone care?" },
+  { title: "What's next", body: "Your first version and the very next step you'd take. End with one memorable line." },
+];
+
+// Example concepts by division — starting points, not a box to fit inside.
+export const exampleConcepts = [
+  {
+    division: "Young Builders",
+    grades: "Grades 4–5",
+    ideas: [
+      { name: "Lost & Found Map", blurb: "A school app where you pin where you lost something so others can help find it." },
+      { name: "Recess Buddy", blurb: "A simple way to match kids who want to play the same game at recess." },
+      { name: "No-Waste Lunch", blurb: "A lunchbox that nudges kids to pack snacks without throwing food away." },
+    ],
+  },
+  {
+    division: "Middle School",
+    grades: "Grades 6–8",
+    ideas: [
+      { name: "Homework Huddle", blurb: "A safe study-buddy finder that pairs classmates by subject and schedule." },
+      { name: "Locker Swap", blurb: "A marketplace for trading or sharing gently used sports gear between families." },
+      { name: "QuietHours", blurb: "An app that helps families set screen-free time together — without the fights." },
+    ],
+  },
+  {
+    division: "High School",
+    grades: "Grades 9–12",
+    ideas: [
+      { name: "RideShare for Practice", blurb: "A vetted carpool tool for teams and clubs so no one misses practice." },
+      { name: "FirstGen", blurb: "A peer-mentoring platform pairing seniors with younger first-gen college applicants." },
+      { name: "ShopLocal SOMA", blurb: "A student-built guide that drives foot traffic to South Orange & Maplewood small businesses." },
+    ],
   },
 ];
 

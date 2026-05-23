@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -213,9 +214,9 @@ export default function Home() {
 
           <p className="mt-6 text-sm text-white/45">
             Curious about the worksheet, pitch template, and rubric?{" "}
-            <a href="/resources" className="text-accent-soft underline-offset-4 hover:underline">
+            <Link href="/resources" className="text-accent-soft underline-offset-4 hover:underline">
               See the participant toolkit →
-            </a>
+            </Link>
           </p>
         </Container>
       </section>

@@ -5,7 +5,7 @@ import { event, nav } from "@/lib/content";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t border-line bg-cream">
+    <footer className="mt-auto border-t border-line bg-cream print:hidden">
       <Stripes className="rounded-none" />
       <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
