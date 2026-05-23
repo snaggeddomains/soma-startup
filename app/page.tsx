@@ -135,26 +135,32 @@ export default function Home() {
       <section id="divisions" className="scroll-mt-20 py-20 sm:py-24">
         <Container>
           <SectionHeading
-            kicker="Divisions & prizes"
-            title="Four divisions — the same prize for each."
-            intro="Age-based divisions keep it fair: younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real — a working prototype, a website, or a deck."
+            kicker="Divisions"
+            title="Three divisions, one shared goal."
+            intro="Age-based divisions keep it fair — younger builders rewarded for creativity, older students held to a higher bar."
             align="center"
           />
 
-          {/* One prize, every division */}
-          <div className="mx-auto mt-10 max-w-3xl rounded-xl2 border border-accent/25 bg-accent-soft/50 px-6 py-6">
-            <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:justify-center sm:gap-5">
-              <span className="font-display text-4xl font-semibold leading-none text-accent-strong">
-                ${event.prizePerDivision.toLocaleString()}
-              </span>
-              <span className="text-ink-soft sm:text-left">
-                <span className="font-medium text-ink">to the winner of every division</span>, plus
-                continued mentorship — with a runner-up recognized in each.
-              </span>
+          {/* Same build, same prize — for every division */}
+          <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+            <div className="rounded-xl2 border border-line bg-paper p-6 text-center">
+              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-faint">
+                Every team builds
+              </p>
+              <p className="mt-2 font-display text-xl font-semibold">A deck + a working prototype</p>
+            </div>
+            <div className="rounded-xl2 border border-accent/25 bg-accent-soft/50 p-6 text-center">
+              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-ink-faint">
+                Every winner gets
+              </p>
+              <p className="mt-2 font-display text-xl font-semibold">
+                ${event.prizePerDivision.toLocaleString()} + mentorship
+              </p>
+              <p className="mt-0.5 text-sm text-ink-soft">runner-up recognized in each</p>
             </div>
           </div>
 
-          <div className="mx-auto mt-10 grid max-w-4xl gap-5 sm:grid-cols-2">
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
             {divisions.map((d) => {
               const style = divisionStyles[d.color];
               return (
@@ -171,9 +177,6 @@ export default function Home() {
                       </span>
                     </div>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{d.focus}</p>
-                    <p className="mt-4 border-t border-line pt-3 text-xs text-ink-faint">
-                      <span className="font-medium text-ink-soft">Judged on:</span> {d.judgedOn}
-                    </p>
                   </div>
                 </div>
               );

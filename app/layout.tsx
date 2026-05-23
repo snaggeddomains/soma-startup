@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s · ${event.name}`,
   },
   description:
-    "A one-day, high-energy entrepreneurship event for students who live in South Orange & Maplewood — grades 4 through college. No coding, no experience required.",
+    "A one-day, high-energy entrepreneurship event for students who live in South Orange & Maplewood — grades 4 through 12. No coding, no experience required.",
   openGraph: {
     title: `${event.name} — ${event.tagline}`,
     description:
@@ -30,6 +30,12 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://somastartup.com",
     siteName: event.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${event.name} — ${event.tagline}`,
+    description:
+      "A one-day startup challenge for SOMA students. Spot a problem, build a solution, pitch it to judges.",
   },
 };
 

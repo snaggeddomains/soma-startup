@@ -13,7 +13,7 @@ export const event = {
   // TODO: replace with a real address before launch.
   contactEmail: "hello@somastartup.com",
   prizePerDivision: 1000,
-  divisionsCount: 4,
+  divisionsCount: 3,
 };
 
 export const nav = [
@@ -46,7 +46,6 @@ export type Division = {
   grades: string;
   color: string; // tailwind token suffix used for accents
   focus: string;
-  judgedOn: string;
 };
 
 export const divisions: Division[] = [
@@ -56,8 +55,7 @@ export const divisions: Division[] = [
     grades: "Grades 4–5",
     color: "gold",
     focus:
-      "Imagination first. Spot a problem, dream up a fix, and show it off with a drawing, model, or story.",
-    judgedOn: "Creativity, clarity, and enthusiasm.",
+      "Imagination first. Spot a problem, dream up a fix, and bring it to life with a simple prototype and a few slides.",
   },
   {
     id: "middle",
@@ -66,7 +64,6 @@ export const divisions: Division[] = [
     color: "sage",
     focus:
       "Turn an idea into a simple concept: who it helps, what it does, and what a first version looks like.",
-    judgedOn: "Problem understanding, clarity, and effort.",
   },
   {
     id: "high",
@@ -75,16 +72,6 @@ export const divisions: Division[] = [
     color: "accent",
     focus:
       "Define a real problem, shape a solution, and pitch it with market thinking and a believable next step.",
-    judgedOn: "Problem definition, feasibility, and pitch quality.",
-  },
-  {
-    id: "college",
-    name: "College",
-    grades: "Undergraduate",
-    color: "plum",
-    focus:
-      "Push toward venture thinking: differentiation, feasibility, and a clear path from idea to first users.",
-    judgedOn: "Market understanding, differentiation, and realistic next steps.",
   },
 ];
 
@@ -367,7 +354,7 @@ export const resources = [
 export const faqs = [
   {
     q: "Who can participate?",
-    a: "Students who live in South Orange or Maplewood, from 4th grade through college. There are four age-based divisions so everyone competes fairly.",
+    a: "Students who live in South Orange or Maplewood, from 4th grade through 12th grade. There are three age-based divisions so everyone competes fairly.",
   },
   {
     q: "Do I need a team or an idea to start?",
