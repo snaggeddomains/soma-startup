@@ -102,22 +102,22 @@ export const schedule: ScheduleBlock[] = [
   {
     time: "9:00 AM",
     title: "What building looks like in 2026",
-    body: "We open by demystifying entrepreneurship for today: how founders spot problems, and what tools — including AI — put within reach of anyone with an idea.",
+    body: "How founders spot problems — and what tools, including AI, now put within anyone's reach.",
   },
   {
     time: "10:15 AM",
     title: "Your competition, explained",
-    body: "Each division learns exactly what's expected — the format, the framework, and what a great pitch looks like for their age bracket.",
+    body: "Each division learns exactly what's expected for their age bracket.",
   },
   {
     time: "11:00 AM",
     title: "Team up and build with an advisor",
-    body: "Form small teams and work with a dedicated advisor through the day (lunch included) to shape your idea into a basic deck and a simple prototype.",
+    body: "Small teams work with a dedicated advisor to build a deck and a simple prototype.",
   },
   {
     time: "4:00 PM",
     title: "The pitch competition",
-    body: "Teams pitch to the judges, who deliberate and name a winner and runner-up in every division. We wrap with awards by 6:00 PM.",
+    body: "Pitch to the judges. Winners and runners-up named by 6:00 PM.",
   },
 ];
 
@@ -154,7 +154,7 @@ export const prizes = [
 
 export type Competition = {
   name: string;
-  blurb: string;
+  tag: string;
   audience: string;
   href: string;
   local?: boolean;
@@ -164,37 +164,32 @@ export type Competition = {
 export const competitions: Competition[] = [
   {
     name: "Seton Hall Pirates Pitch",
-    blurb:
-      "A high school startup pitch competition run right here in South Orange by Seton Hall's Stillman School of Business, with $50K+ in prizes and scholarships.",
-    audience: "High school (sophomore–senior)",
+    tag: "$50K+ in prizes, here in South Orange",
+    audience: "High school",
     href: "https://www.shu.edu/undergraduate-admissions/pirates-pitch-competition.html",
     local: true,
   },
   {
     name: "Diamond Challenge",
-    blurb:
-      "A global high school entrepreneurship competition with Business Innovation and Social Innovation tracks, run by Horn Entrepreneurship at the University of Delaware.",
-    audience: "High school, ages 14–18",
+    tag: "Global business & social innovation",
+    audience: "Ages 14–18",
     href: "https://diamondchallenge.org/",
   },
   {
-    name: "Blue Ocean Competition",
-    blurb:
-      "The world's largest virtual pitch competition for high schoolers, drawing thousands of students from across the globe each year.",
-    audience: "High school, ages 14–18",
+    name: "Blue Ocean",
+    tag: "World's largest virtual pitch",
+    audience: "Ages 14–18",
     href: "https://blueoceancompetition.org/",
   },
   {
-    name: "NFTE World Series of Innovation",
-    blurb:
-      "A free, online challenge from the Network for Teaching Entrepreneurship where youth pitch solutions tied to the UN Sustainable Development Goals.",
+    name: "NFTE World Series",
+    tag: "UN Global Goals challenge",
     audience: "Ages 5–24",
     href: "https://innovation.nfte.com/",
   },
   {
     name: "Conrad Challenge",
-    blurb:
-      "A multi-stage innovation competition where student teams build commercially viable solutions to real-world problems across science and tech categories.",
+    tag: "Build real-world solutions",
     audience: "Ages 13–18",
     href: "https://www.conradchallenge.org/",
   },
@@ -203,7 +198,7 @@ export const competitions: Competition[] = [
 // Local heritage — warm, sourced facts about South Orange & Maplewood.
 export const heritage = {
   lead: "South Orange and Maplewood have been a town of builders since the railroad arrived.",
-  body: "When the Morris & Essex line reached Maplewood in 1837, it turned quiet farmland into a community of people who make things — and that never stopped. A short ride from New York, the towns filled with artists, writers, musicians, and makers, earning the nickname \"Brooklyn West.\" SOMA Startup is our way of handing that creative, build-it-yourself spirit to the kids growing up here now.",
+  body: "A short ride from New York, our towns filled with artists, writers, musicians, and makers — earning the nickname \"Brooklyn West.\" SOMA Startup hands that build-it-yourself spirit to the kids growing up here now.",
   facts: [
     { value: "1837", label: "the railroad reached Maplewood and the building began" },
     { value: "1856", label: "Seton Hall University founded in South Orange" },
@@ -227,18 +222,9 @@ export const notableLocals: Local[] = [
 ];
 
 export const creativeScene = [
-  {
-    name: "SOPAC",
-    note: "The South Orange Performing Arts Center — the cultural heart of SOMA since 2006.",
-  },
-  {
-    name: "Maplewoodstock",
-    note: "A free music & arts festival in Memorial Park that's drawn the town together since 2004.",
-  },
-  {
-    name: "Midtown Direct Rep",
-    note: "A theater company founded by 32 local Broadway actors and techs who share the same train.",
-  },
+  { name: "SOPAC", note: "Performing arts center, since 2006" },
+  { name: "Maplewoodstock", note: "Free music festival, since 2004" },
+  { name: "Midtown Direct Rep", note: "Theater by local Broadway pros" },
 ];
 
 export type Judge = {

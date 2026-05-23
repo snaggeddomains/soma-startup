@@ -10,7 +10,6 @@ import {
   divisions,
   schedule,
   eventHours,
-  prizes,
   competitions,
   heritage,
   notableLocals,
@@ -36,10 +35,20 @@ const divisionStyles: Record<string, { chip: string; dot: string; bar: string }>
   plum: { chip: "bg-plum-soft text-plum", dot: "bg-plum", bar: "bg-plum" },
 };
 
-function Check() {
+function Globe() {
   return (
-    <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" aria-hidden>
-      <path d="M5 10.5 8.5 14 15 6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" />
+    </svg>
+  );
+}
+
+function Pin() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+      <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
     </svg>
   );
 }
@@ -92,29 +101,18 @@ export default function Home() {
       </section>
 
       {/* Why it matters — concise mission */}
-      <section className="py-20 sm:py-24">
+      <section className="py-16 sm:py-20">
         <Container>
-          <div className="grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-            <SectionHeading
-              kicker="Why it matters"
-              title="The hardest part isn't ability. It's exposure."
-              intro="Most kids have never been handed a framework for how an idea becomes something real. SOMA Startup gives them that — early, in a way that feels exciting and genuinely accessible — so they grow up seeing technology and startups as things they can shape, not just consume."
-            />
-            <ul className="grid gap-3 sm:grid-cols-1">
-              {[
-                ["For every age", "Four divisions, from young kids through college."],
-                ["No experience needed", "No coding, no prep — ideas matter more than polish."],
-                ["Something to show for it", "A deck, a prototype, a pitch, and continued mentorship."],
-              ].map(([t, b]) => (
-                <li key={t} className="flex gap-3 rounded-xl2 border border-line bg-cream px-5 py-4">
-                  <Check />
-                  <span>
-                    <span className="block font-medium">{t}</span>
-                    <span className="block text-sm text-ink-soft">{b}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="kicker mb-3">Why it matters</p>
+            <h2 className="font-display text-balance text-3xl font-semibold leading-[1.15] tracking-tight sm:text-4xl">
+              The hardest part isn&apos;t ability. It&apos;s exposure.
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+              Most kids have never been handed a framework for how an idea becomes something
+              real. We give them that early — so they grow up seeing startups as things they
+              can shape, not just consume.
+            </p>
           </div>
         </Container>
       </section>
@@ -173,14 +171,9 @@ export default function Home() {
           <SectionHeading
             kicker="Four divisions"
             title="Everyone competes on a level playing field."
-            intro="Age-based divisions keep expectations and judging developmentally appropriate. Younger builders are rewarded for creativity; older students are held to a higher bar."
+            intro="Age-based divisions keep it fair — younger builders rewarded for creativity, older students held to a higher bar. Every team leaves with something real: a working prototype, a website, or a deck."
             align="center"
           />
-          <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-ink-soft">
-            No matter the age, every team leaves with{" "}
-            <span className="font-medium text-ink">something real</span> — a working prototype,
-            a website, or a deck. This is where ideas turn into real-life activity.
-          </p>
           <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-2">
             {divisions.map((d) => {
               const style = divisionStyles[d.color];
@@ -218,7 +211,7 @@ export default function Home() {
               One day, four parts — {eventHours}.
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-white/70">
-              A clear beginning, middle, and end. No coding required at any point.
+              A clear beginning, middle, and end — built for any age.
             </p>
           </div>
 
@@ -252,16 +245,8 @@ export default function Home() {
               <SectionHeading
                 kicker="Prizes & incentives"
                 title="A winner and a runner-up in every division."
-                intro="So a 4th grader and a college senior both walk away recognized — and winners keep getting guidance long after the closing ceremony."
+                intro="So a 4th grader and a college senior both walk away recognized — and winners keep getting mentorship long after the closing ceremony."
               />
-              <ul className="mt-8 space-y-4">
-                {prizes.map((p) => (
-                  <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-ink-soft">
-                    <Check />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="grid grid-cols-2 gap-5">
@@ -336,34 +321,66 @@ export default function Home() {
         <Container>
           <SectionHeading
             kicker="Where it leads"
-            title="An on-ramp into bigger entrepreneurship pathways."
-            intro="We don't compete with the major student competitions — we prepare kids for them, including a serious one right in our own backyard at Seton Hall."
+            title="An on-ramp to bigger stages."
+            intro="We don't compete with the major student competitions — we get kids ready for them, starting in our own backyard."
+            align="center"
           />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {competitions.map((c) => (
-              <a
-                key={c.name}
-                href={c.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col rounded-xl2 border border-line bg-paper p-6 transition-colors hover:border-accent/40"
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-display font-semibold">{c.name}</h3>
-                  {c.local && (
-                    <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
-                      Local
+
+          {(() => {
+            const featured = competitions.find((c) => c.local);
+            const others = competitions.filter((c) => !c.local);
+            return (
+              <div className="mx-auto mt-12 max-w-4xl space-y-4">
+                {featured && (
+                  <a
+                    href={featured.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="card-lift group flex items-center gap-5 rounded-xl2 border border-accent/30 bg-accent-soft/60 p-6 transition-colors hover:border-accent/60"
+                  >
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-paper">
+                      <Pin />
                     </span>
-                  )}
-                </div>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{c.blurb}</p>
-                <p className="mt-4 flex items-center justify-between text-xs text-ink-faint">
-                  <span>{c.audience}</span>
-                  <span className="transition-transform group-hover:translate-x-0.5" aria-hidden>→</span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-display text-lg font-semibold">{featured.name}</h3>
+                        <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-paper">
+                          Local
+                        </span>
+                      </div>
+                      <p className="mt-0.5 text-sm text-ink-soft">{featured.tag}</p>
+                    </div>
+                    <span className="hidden text-2xl text-accent transition-transform group-hover:translate-x-0.5 sm:block" aria-hidden>
+                      →
+                    </span>
+                  </a>
+                )}
+
+                <p className="pt-2 text-center text-sm text-ink-faint">
+                  …then national & global programs we prepare you for:
                 </p>
-              </a>
-            ))}
-          </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {others.map((c) => (
+                    <a
+                      key={c.name}
+                      href={c.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex flex-col items-center rounded-xl2 border border-line bg-paper p-5 text-center transition-colors hover:border-accent/40"
+                    >
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-cream text-ink-soft transition-colors group-hover:text-accent">
+                        <Globe />
+                      </span>
+                      <h3 className="mt-3 font-display text-sm font-semibold leading-snug">{c.name}</h3>
+                      <p className="mt-1 flex-1 text-xs leading-snug text-ink-soft">{c.tag}</p>
+                      <p className="mt-2 text-[11px] text-ink-faint">{c.audience}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </Container>
       </section>
 
