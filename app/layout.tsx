@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://somastartup.com"),
   title: {
     default: `${event.name} — ${event.tagline}`,
     template: `%s · ${event.name}`,
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
     description:
       "A one-day startup challenge for SOMA students. Spot a problem, build a solution, pitch it to judges.",
     type: "website",
+    url: "https://somastartup.com",
+    siteName: event.name,
   },
 };
 
