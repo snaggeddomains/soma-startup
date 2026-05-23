@@ -7,7 +7,8 @@ import { event, involveTracks } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Get Involved",
   description:
-    "Advise a team or sponsor SOMA Startup — and help build a lasting local institution for youth entrepreneurship.",
+    "Advise a team or sponsor SOMA Startup — and help build a lasting local institution for youth entrepreneurship in South Orange & Maplewood.",
+  alternates: { canonical: "/get-involved" },
 };
 
 export default function GetInvolvedPage() {

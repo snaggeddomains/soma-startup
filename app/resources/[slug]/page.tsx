@@ -29,7 +29,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const r = resources.find((x) => x.slug === slug);
   if (!r) return {};
-  return { title: r.title, description: r.body };
+  return {
+    title: r.title,
+    description: r.body,
+    alternates: { canonical: `/resources/${slug}` },
+  };
 }
 
 function NumBadge({ n }: { n: number }) {

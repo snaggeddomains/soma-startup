@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Resources",
   description:
     "The SOMA Startup participant toolkit — idea worksheet, pitch template, judging rubric, schedule, slide template, and example concepts.",
+  alternates: { canonical: "/resources" },
 };
 
 export default function ResourcesPage() {

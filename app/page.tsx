@@ -69,9 +69,61 @@ function Clock() {
   );
 }
 
+const SITE = "https://somastartup.com";
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "SOMA Startup",
+      url: SITE,
+      logo: `${SITE}/icon.svg`,
+      description:
+        "A one-day youth entrepreneurship and startup pitch competition for South Orange & Maplewood students.",
+      areaServed: "South Orange & Maplewood, New Jersey",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      name: "SOMA Startup",
+      url: SITE,
+      publisher: { "@id": `${SITE}/#organization` },
+    },
+    {
+      "@type": "EducationEvent",
+      name: "SOMA Startup",
+      description:
+        "A one-day youth entrepreneurship and startup pitch competition for South Orange & Maplewood students in grades 4–12. Teams build a deck and a working prototype, then pitch to judges.",
+      url: SITE,
+      image: `${SITE}/opengraph-image`,
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
+      // TODO: add `startDate` once the date is confirmed to unlock Event rich results.
+      location: {
+        "@type": "Place",
+        name: "South Orange & Maplewood, NJ",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "South Orange",
+          addressRegion: "NJ",
+          addressCountry: "US",
+        },
+      },
+      organizer: { "@id": `${SITE}/#organization` },
+      audience: { "@type": "EducationalAudience", educationalRole: "student" },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero */}
       <section className="relative overflow-hidden bg-cream">
         <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />

@@ -6,7 +6,8 @@ import { divisions, event, principles } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Register",
-  description: `Register a student for ${event.name}.`,
+  description: `Register a student for ${event.name}, the youth startup pitch competition for South Orange & Maplewood students in grades 4–12.`,
+  alternates: { canonical: "/register" },
 };
 
 export default function RegisterPage() {
