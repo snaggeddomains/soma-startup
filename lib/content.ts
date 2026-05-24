@@ -3,7 +3,7 @@
 
 export const event = {
   name: "SOMA Startup",
-  tagline: "A town of makers — now it's the kids' turn.",
+  tagline: "Tomorrow's founders are growing up in SOMA.",
   // Date & venue not yet announced.
   dateLabel: "TBD",
   dateISO: "",

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   openGraph: {
-    title: `${event.name} — A town of makers, now it's the kids' turn`,
+    title: `${event.name} — Tomorrow's founders are growing up in South Orange & Maplewood`,
     description: siteDescription,
     type: "website",
     url: "https://somastartup.com",
