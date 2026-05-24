@@ -137,9 +137,9 @@ export default function Home() {
               <span className="text-accent">are growing up in SOMA.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft sm:mt-6">
-              South Orange & Maplewood have always been full of artists, musicians,
-              marketers, and builders. {event.name} is a one-day challenge that hands that
-              creative spirit to the next generation — spot a problem, build it, pitch it.
+              South Orange & Maplewood have always been full of artists, makers, and
+              founders. {event.name} is a one-day challenge that puts that creative spirit
+              in kids&apos; hands. Spot a problem. Build a fix. Pitch it to the judges.
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row">
               <Button href="/register" className="px-6 py-3 text-base">
