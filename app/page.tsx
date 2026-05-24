@@ -132,9 +132,9 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge className="mb-5 sm:mb-7" />
             <h1 className="font-display text-balance text-5xl font-semibold leading-[1.04] tracking-tight sm:text-7xl">
-              A town of makers.
+              Tomorrow&apos;s founders
               <br />
-              <span className="text-accent">Now it&apos;s the kids&apos; turn.</span>
+              <span className="text-accent">are growing up in SOMA.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft sm:mt-6">
               South Orange & Maplewood have always been full of artists, musicians,
