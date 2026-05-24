@@ -70,27 +70,32 @@ function Clock() {
 }
 
 const SITE = "https://somastartup.com";
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SITE}/#organization`,
-      name: "SOMA Startup",
-      url: SITE,
-      logo: `${SITE}/icon.svg`,
-      description:
-        "A one-day youth entrepreneurship and startup pitch competition for South Orange & Maplewood students.",
-      areaServed: "South Orange & Maplewood, New Jersey",
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE}/#website`,
-      name: "SOMA Startup",
-      url: SITE,
-      publisher: { "@id": `${SITE}/#organization` },
-    },
-    {
+
+const orgNode = {
+  "@type": "Organization",
+  "@id": `${SITE}/#organization`,
+  name: "SOMA Startup",
+  url: SITE,
+  logo: `${SITE}/icon.svg`,
+  description:
+    "A one-day youth entrepreneurship and startup pitch competition for South Orange & Maplewood students.",
+  areaServed: "South Orange & Maplewood, New Jersey",
+};
+
+const websiteNode = {
+  "@type": "WebSite",
+  "@id": `${SITE}/#website`,
+  name: "SOMA Startup",
+  url: SITE,
+  publisher: { "@id": `${SITE}/#organization` },
+};
+
+// Only emit Event structured data once a real date exists. Google requires
+// `startDate` on every Event, so publishing one while the date is TBD is
+// invalid and earns Search Console errors rather than rich results. Setting
+// `event.dateISO` (and optionally `event.endDateISO`) activates this node.
+const eventNode = event.dateISO
+  ? {
       "@type": "EducationEvent",
       name: "SOMA Startup",
       description:
@@ -99,7 +104,8 @@ const jsonLd = {
       image: `${SITE}/opengraph-image`,
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       eventStatus: "https://schema.org/EventScheduled",
-      // TODO: add `startDate` once the date is confirmed to unlock Event rich results.
+      startDate: event.dateISO,
+      ...(event.endDateISO ? { endDate: event.endDateISO } : {}),
       location: {
         "@type": "Place",
         name: "South Orange & Maplewood, NJ",
@@ -112,8 +118,12 @@ const jsonLd = {
       },
       organizer: { "@id": `${SITE}/#organization` },
       audience: { "@type": "EducationalAudience", educationalRole: "student" },
-    },
-  ],
+    }
+  : null;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [orgNode, websiteNode, ...(eventNode ? [eventNode] : [])],
 };
 
 export default function Home() {

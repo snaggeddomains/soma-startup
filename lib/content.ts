@@ -6,7 +6,11 @@ export const event = {
   tagline: "Tomorrow's founders are growing up in SOMA.",
   // Date & venue not yet announced.
   dateLabel: "TBD",
+  // ISO 8601 (e.g. "2026-10-17" or "2026-10-17T09:00:00-04:00"). While empty,
+  // the homepage omits Event structured data — Google requires startDate, so
+  // publishing an Event without it is invalid. Set this to enable Event markup.
   dateISO: "",
+  endDateISO: "",
   format: "All-day, single-day event",
   location: "South Orange + Maplewood, NJ",
   venueLabel: "TBD",
